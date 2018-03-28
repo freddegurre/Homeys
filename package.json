@@ -1,0 +1,19 @@
+{
+  "name": "homeys",
+  "version": "1.0.0",
+  "description": "homeys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/freddegurre/Homeys.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/freddegurre/Homeys/issues"
+  },
+  "homepage": "https://github.com/freddegurre/Homeys#readme"
+}
