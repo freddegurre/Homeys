@@ -24,11 +24,7 @@ module.exports = function(app){
     //Create new owner
     app.post("/api/owners", function (req, res){
         console.log(req.body); 
-        db.Owner.create({
-            email: req.body.email, 
-            user_name: req.body.user_name, 
-            pass: req.body.pass
-        }).then(function(data){
+        db.Owner.create(req.body).then(function(data){
             res.json(data); 
         }).catch(function(err){
             res.json(err);
