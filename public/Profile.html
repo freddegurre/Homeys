@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profiles Page</title>
+
+ 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="glyphicon glyphicon-fire"></span> Profile </h1>
+      <br>
+
+      <div class="text-center">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">User Profile </h4>
+          <div class="panel-body" id="userProfile">
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">Properties</h4>
+          </div>
+          <div class="panel-body" id="propertyProfile">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+          <p><a> Homeys Copyright 2018</a></p>
+        </div>
+      </footer>
+
+  </div>
+
+</body>
+
+
+
+<script type="text/javascript">
+
+    function runUserQuery() {
+
+     var currentURL = window.location.origin;
+
+      $.ajax({ url: currentURL + "/api/owners/:id", method: "GET" })
+        .then(function(userData) {
+
+          console.log("------------------------------------");
+          console.log("URL: " + currentURL + "/api/owners/:id");
+          console.log("------------------------------------");
+
+          console.log(userData);
+          console.log("------------------------------------");
+
+          for (var i = 0; i < userData.length; i++) {
+
+            var userProfile = $("<div>");
+            userProfile.addClass("well");
+            userProfile.attr("id", "tableWell-" + i + 1);
+            $("#userProfile").append(userProfile);
+
+
+
+          };
+        });
+    };
+    runUserQuery();
+    runPropertiesQuery();
+
+
+</script>
+</html>
