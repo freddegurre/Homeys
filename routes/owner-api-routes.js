@@ -28,10 +28,11 @@ module.exports = function(app){
             user_name: req.body.user_name, 
             pass: req.body.pass
         }).then(function(data){
-            res.json(data); 
-        }).catch(function(err){
-            res.json(err);
-        }); 
+            res.json(data);
+        //if email is not vaild, username is to short/in use, or password is in use return error
+            }).catch(function(err){
+                res.json(err);
+            }); 
     });
     // delete owner 
     app.delete("/api/owners/:id", function(req, res){
@@ -42,6 +43,16 @@ module.exports = function(app){
         }).then(function(data){
             res.json(data); 
         })
-    }); 
+    });
+
+    app.put("/api/owners", function(req, res){
+        db.Post.update(req.body, {
+            where:{
+                id:req.body.id
+            }
+        }).then(function(data){
+            res.json(data); 
+        })
+    })
 
 }; 
