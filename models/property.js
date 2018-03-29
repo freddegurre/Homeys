@@ -52,8 +52,18 @@ module.exports = function (sequelize, DataTypes) {
     });
 
     Property.associate = function(models) {
-        Property.belongsToMany(models.Owner, {
-            through: 'properties2owner'
+        Property.belongsTo(models.Owner, {
+            foreignKey: {
+                allowNull: false
+            }
+        })
+    };
+
+    Property.associate = function(models) {
+        Property.belongsTo(models.Provider, {
+            foreignKey: {
+                allowNull: false
+            }
         })
     }
 

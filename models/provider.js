@@ -28,10 +28,12 @@ module.exports = function (sequelize, DataTypes ) {
             }
         }
     });
-    Provider.associate = function(models) {
-        Provider.belongsToMany(models.Property, {
-            through: 'providers2property'
-        })
-    };
+
+    Provider.associate = function (models) {
+        Provider.hasMany(models.Property, {
+            onDelete: "cascade"
+        });
+    }
+
     return Provider
 };

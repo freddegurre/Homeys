@@ -29,5 +29,11 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
+
+    Owner.associate = function (models) {
+        Owner.hasMany(models.Property, {
+            onDelete: "cascade"
+        });
+    }
     return Owner; 
 };
