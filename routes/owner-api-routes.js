@@ -25,14 +25,6 @@ module.exports = function(app){
     //Create new owner
     app.post("/api/owners", function (req, res){
         console.log(req.body); 
-
-        if(!req.body.user_name || !req.body.password){
-            res.status("400");
-            res.send("Invalid details!");
-         } else {
-            db.Owner.findAll({email: req.body.email}).then(function(data){
-                res.json("user already exists", data);
-            });
             db.Owner.create({
                 email: req.body.email, 
                 user_name: req.body.user_name, 
@@ -44,7 +36,7 @@ module.exports = function(app){
                 res.json(err);
             }); 
            
-         }
+         
       
         
     });
