@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="text-center"><span class="glyphicon glyphicon-home"></span> Login</h1>
+      <br>
+
+      <div class="text-center">
+        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">Login</h4>
+          </div>
+          <div class="panel-body">
+
+            <form role="form">
+
+              <div class="form-group">
+                <label for="user">User Name</label>
+                <input type="text" class="form-control" id="user">
+              </div>
+
+
+              <div class="form-group">
+                <label for="pass">Password</label>
+                <input type="text" class="form-control" id="pass">
+              </div>
+
+              <button type="submit" class="btn btn-primary submit">Submit</button>
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <p><a> Homeys Copyright 2018</a></p>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+$(".submit").on("click", function(event){
+        event.preventDefault(); 
+
+        var login = {
+            user_name: $("#user").val().trim(),
+            pass: $("#pass").val().trim()
+        }
+    console.log(login); 
+   
+    $.post("/api/login", login, 
+        function (data) {
+
+          if (data) {
+            alert("Welcome!");
+          }
+
+          else {
+            alert("Invalid Login");
+          }
+
+          $("#user_name").val("");
+          $("#pass").val("");
+
+        });
+
+    });
+
+</script>
