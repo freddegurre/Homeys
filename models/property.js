@@ -6,61 +6,53 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [3, 30]
+                len: [3, 30],
+                msg: 'Please enter a valid property name'
             },
             unique: {
                 args: true,
-                msg: 'Please enter a valid property name'
+                msg: 'Email address already in use!'
             }
         },
         streetAddress : {
             type: DataTypes.STRING, 
             allowNull: false,
             validate: {
-                len: [3, 30]
-            },
-            unique: {
-                args: true,
+                len: [3, 30],
                 msg: 'Please enter a valid street name.'
-            }
+            },
+            
         },
         zipCode: {
             type: DataTypes.INTEGER, 
             allowNull: false,
             validate: {
-                len: [5, 10]
-            },
-            unique: {
-                args: true,
+                len: [5, 10],
                 msg: 'Please enter a valid zip code.'
-            }
+            },
+            
         },
         city: {
             type: DataTypes.STRING, 
             allowNull: false,
             validate: {
-                len: [3, 25]
-            },
-            unique: {
-                args: true,
+                len: [3, 25],
                 msg: 'Please enter a valid city.'
-            }
+            },
+          
         },
         state: {
             type: DataTypes.STRING, 
             allowNull: false,
             validate: {
-                len: [4, 20]
-            },
-            unique: {
-                args: true,
+                len: [4, 20],
                 msg: 'Please enter a valid city.'
-            }
+            },
         }
     });
 
-    Post.associate = function(models) {
-        Post.belongsToMany(models.Owner, {
+    Property.associate = function(models) {
+        Property.belongsToMany(models.Owner, {
             through: 'properties2owner'
         })
     }
