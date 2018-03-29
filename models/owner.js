@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
         pass: {
             type: DataTypes.STRING,
             validate: {
-                len: [1, 100]
+                len: [6, 20]
             },
         }, 
     });
