@@ -1,4 +1,5 @@
 //Routes for viewing property info
+var db = require("../models"); 
 
 module.exports = function (app) {
 
