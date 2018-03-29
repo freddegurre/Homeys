@@ -29,7 +29,19 @@ module.exports = function(app){
             pass: req.body.pass
         }).then(function(data){
             res.json(data); 
-        });
+        }).catch(function(err){
+            res.json(error);
+        }); 
     });
+    // delete owner 
+    app.delete("/api/owners/:id", function(req, res){
+        db.Owner.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(data){
+            res.json(data); 
+        })
+    }); 
 
 }; 
