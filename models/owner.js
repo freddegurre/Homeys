@@ -27,6 +27,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 len: [6, 20]
             }
+        },
+        token: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 

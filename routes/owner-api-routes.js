@@ -24,14 +24,19 @@ module.exports = function(app){
 
     //Create new owner
     app.post("/api/owners", function (req, res){
-        console.log(req.body); 
+        //console.log(req.body); 
+        var token = "t " + Math.random();
             db.Owner.create({
                 email: req.body.email, 
                 user_name: req.body.user_name, 
-                pass: req.body.pass
-            }).then(function(data){
-                req.session.user = data;
-                res.json("userCreated", data); 
+                pass: req.body.pass,
+                token: token
+            })
+            .then(function(data){
+                console.log(data.dataValues)
+                res.cookie("token", token, {maxAge:9999})
+                req.session.user = data.dataValues;
+                res.json(req.session.user); 
             }).catch(function(err){
                 res.json(err);
             }); 
