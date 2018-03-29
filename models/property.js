@@ -7,11 +7,11 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [3, 30],
-                msg: 'Please enter a valid property name'
+                msg: 'House already in database!'
             },
             unique: {
                 args: true,
-                msg: 'Email address already in use!'
+                msg: 'House already in database!'
             }
         },
         streetAddress : {
@@ -46,7 +46,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
             validate: {
                 len: [4, 20],
-                msg: 'Please enter a valid city.'
+                msg: 'Please enter a valid state.'
             },
         }
     });
@@ -62,7 +62,7 @@ module.exports = function (sequelize, DataTypes) {
     Property.associate = function(models) {
         Property.belongsTo(models.Provider, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         })
     }
