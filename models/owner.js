@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
             },
             unique: {
                 args: true,
-                msg: 'Name is use!'
+                msg: 'Name in use!'
             }
         }, 
         pass: {

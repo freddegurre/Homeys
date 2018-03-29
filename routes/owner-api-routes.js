@@ -30,7 +30,7 @@ module.exports = function(app){
         }).then(function(data){
             res.json(data); 
         }).catch(function(err){
-            res.json(error);
+            res.json(err);
         }); 
     });
     // delete owner 
