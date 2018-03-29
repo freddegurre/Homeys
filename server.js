@@ -23,6 +23,9 @@ app.use(express.static("public"));
 // =============================================================
 require("./routes/owner-api-routes.js")(app);
 //add the right routing here once we have it
+require("./routes/html-api-routes.js")(app); 
+require("./routes/property-api-routes.js")(app); 
+
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
