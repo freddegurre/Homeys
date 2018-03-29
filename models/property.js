@@ -62,7 +62,7 @@ module.exports = function (sequelize, DataTypes) {
     Property.associate = function(models) {
         Property.belongsTo(models.Provider, {
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         })
     }

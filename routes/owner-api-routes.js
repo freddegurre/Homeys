@@ -14,7 +14,8 @@ module.exports = function(app){
         db.Owner.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [db.Property]
         }).then(function(data){
             res.json(data); 
         });
