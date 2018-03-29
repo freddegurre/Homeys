@@ -2,8 +2,8 @@ module.exports = function(sequelize, DataTypes) {
     var Owner = sequelize.define("Owner", {
         email: {
             type: DataTypes.STRING,
-            validate: {
-              isEmail:true
+            validate:{
+               isEmail: true, 
             },
             unique: {
                 args: true,
@@ -18,15 +18,16 @@ module.exports = function(sequelize, DataTypes) {
             },
             unique: {
                 args: true,
-                msg: 'Name is use!'
+                msg: 'Name in use!'
             }
         }, 
         pass: {
             type: DataTypes.STRING,
+            allowNull: false,
             validate: {
                 len: [6, 20]
-            },
-        }, 
+            }
+        }
     });
     return Owner; 
 };
