@@ -21,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Static directory
-app.use(express.static("public"));
+
 app.use(cookieParser());
-app.use(session({secret: "Your secret key"}));
+app.use(session({secret: "343430939043jfef", resave:false, saveUninitialized:true}));
 
 // Routes
 // =============================================================
@@ -35,7 +35,7 @@ require("./routes/property-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync({force: false}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

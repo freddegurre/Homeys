@@ -25,7 +25,13 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
   app.get("/profile", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
+    if (!req.session.user) {
+    res.send("you have to login"); 
+     res.status(401); 
+    }else {
+      res.sendFile(path.join(__dirname, "../public/profile.html"));
+    }
+    
   });
 
 

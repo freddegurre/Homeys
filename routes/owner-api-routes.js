@@ -4,23 +4,36 @@ var path = require("path");
 module.exports = function(app){
 
     //get all owners in DB. 
-    app.get("/api/owners", function (req, res){
+/*app.get("/api/owners", function (req, res){
         db.Owner.findAll({}).then(function(data){
             res.json(data); 
+            var id = req.session.user
+            console.log("id" + JSON.stringify(id)); 
         });
-    });
+    });*/
 
     //get owner by id and return json. 
-    app.get("/api/owners/:id", function(req, res){
+    app.get("/api/owners/", function(req, res){
         db.Owner.findOne({
             where: {
-                id: req.params.id
+                id: req.session.user.id
             },
             include: [db.Property]
         }).then(function(data){
-            res.json(data); 
+            res.json(data.dataValues); 
+            console.log(data.dataValues); 
         });
     });
+
+    /*app.get("api/owners", function(req, res){
+        
+        db.Owner.findOne({
+            where: {
+                id: req.session.user.id
+            }
+        })
+    }); */
+
 
     //Create new owner
     app.post("/api/owners", function (req, res){
@@ -47,7 +60,7 @@ module.exports = function(app){
     });
     //Login route 
     app.post("/api/login", function(req, res){
-        console.log(req.body.us); 
+
         
         db.Owner.findOne({
             where: {
@@ -55,9 +68,13 @@ module.exports = function(app){
                 pass: req.body.pass
             }
         }).then(function(data){
-            
+            console.log(data.dataValues);
             if (data){
-               res.json(data);
+                console.log("loged in"); 
+                req.session.user = data.dataValues;
+                //res.redirect("/profile");
+                res.json(data.dataValues);
+               
             } else {
                 res.send("you suck")
             }

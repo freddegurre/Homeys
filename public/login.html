@@ -79,12 +79,12 @@ $(".submit").on("click", function(event){
         }
     console.log(login); 
    
-    $.post("/api/login", login, 
-        function (data) {
-
+    $.post("/api/login", login, function (data) {
+    console.log(data);
           if (data) {
-            alert("Welcome!");
-            Redirect("./Profile.html")
+            console.log("loged in"); 
+             
+            Redirect("./profile")
 
           }
 

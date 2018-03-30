@@ -23,6 +23,7 @@
     "express-session": "^1.15.6",
     "mysql2": "^1.5.3",
     "path": "^0.12.7",
+    "save": "^2.3.2",
     "sequelize": "^4.37.4"
   }
 }
