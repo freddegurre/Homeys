@@ -115,6 +115,8 @@
 
                 if (data) {
                     alert("You're Profile Has Been Created");
+                    Redirect("./Profile.html"); 
+
                 }
 
                 else {
@@ -130,5 +132,9 @@
             });
 
     });
+    function Redirect(where){
+    window.location=where;
+  }
+
 
 </script>

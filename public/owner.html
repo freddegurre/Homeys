@@ -92,9 +92,10 @@
         function(data) {
 
           if (data) {
-            alert("You're Profile Has Been Created");
             console.log(data);
             console.log(data.user_name);
+            Redirect("./Profile.html")
+            
 
           }
 
@@ -109,5 +110,9 @@
         });
 
     });
+    
+  function Redirect(where){
+    window.location=where;
+  }
 
 </script>

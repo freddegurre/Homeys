@@ -84,6 +84,8 @@ $(".submit").on("click", function(event){
 
           if (data) {
             alert("Welcome!");
+            Redirect("./Profile.html")
+
           }
 
           else {
@@ -96,5 +98,9 @@ $(".submit").on("click", function(event){
         });
 
     });
+
+  function Redirect(where){
+    window.location=where;
+  }
 
 </script>
