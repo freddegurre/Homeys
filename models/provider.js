@@ -8,15 +8,17 @@ module.exports = function (sequelize, DataTypes ) {
             allowNull: false,
             validate: {
                 len: [3, 30],
-                msg: 'Please enter a valid name'
+            },
+            unique: {
+                args: true,
+                msg: 'Name already in use!'
             },
         },
         zipCode: {
             type: DataTypes.INTEGER, 
             allowNull: false,
             validate: {
-                len: [5, 10],
-                msg: 'Please enter a valid zip code.'
+                len: [3, 10],
             }
         },
         dailyRate: {
@@ -24,8 +26,11 @@ module.exports = function (sequelize, DataTypes ) {
             allowNull: false,
             validate: {
                 len: [1, 5],
-                msg: 'Please enter a valid dollar amount.'
             }
+        }, 
+        token: {
+            type: DataTypes.STRING,
+            allowNull: false
         }
     });
 
