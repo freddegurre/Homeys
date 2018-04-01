@@ -4,40 +4,36 @@ module.exports = function (sequelize, DataTypes) {
     var Property = sequelize.define('Property', {
         propName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            notNull: true,
             validate: {
                 len: [3, 30],
-                msg: 'House already in database!'
+                //msg: 'House already in database!'
             },
-            unique: {
-                args: true,
-                msg: 'House already in database!'
-            }
         },
         streetAddress : {
             type: DataTypes.STRING, 
-            allowNull: false,
+            notNull: true,
             validate: {
                 len: [3, 30],
-                msg: 'Please enter a valid street name.'
+                //msg: 'Please enter a valid street name.'
             },
             
         },
         zipCode: {
             type: DataTypes.INTEGER, 
-            allowNull: false,
+            notNull: true,
             validate: {
-                len: [5, 10],
-                msg: 'Please enter a valid zip code.'
+                len: [1, 10],
+               // msg: 'Please enter a valid zip code.'
             },
             
         },
         city: {
             type: DataTypes.STRING, 
-            allowNull: false,
+            notNull: true,
             validate: {
-                len: [3, 25],
-                msg: 'Please enter a valid city.'
+                len: [1, 25],
+                //msg: 'Please enter a valid city.'
             },
           
         },
@@ -45,8 +41,8 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.STRING, 
             allowNull: false,
             validate: {
-                len: [4, 20],
-                msg: 'Please enter a valid state.'
+                len: [1, 20],
+                //msg: 'Please enter a valid state.'
             },
         }
     });

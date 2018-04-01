@@ -97,7 +97,6 @@
     $(".submit").on("click", function (event) {
         event.preventDefault();
 
-
         var Property = {
             propName: $("#propName").val().trim(),
             streetAddress: $("#streetAddress").val().trim(),
@@ -110,12 +109,12 @@
 
 
 
-        $.post("/api/property", Property,
+        $.post("/api/properties", Property,
             function (data) {
 
                 if (data) {
-                    alert("You're Profile Has Been Created");
-                    Redirect("./Profile.html"); 
+                    alert("yayyy");
+                    Redirect("/profile"); 
 
                 }
 

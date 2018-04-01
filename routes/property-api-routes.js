@@ -1,5 +1,6 @@
 //Routes for viewing property info
 var db = require("../models"); 
+var path = require("path");
 
 module.exports = function (app) {
 
@@ -13,17 +14,20 @@ module.exports = function (app) {
     //Create a new property
     app.post("/api/properties", function (req, res) {
         console.log(req.body);
-        db.Property.create({
-            OwnerId: req.params.ownerid,
+        console.log(req.session.user.id); 
+       db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
             zipCode: req.body.zipCode,
             city: req.body.city,
             state: req.body.state,
-        }).then(function (data) {
+            OwnerId: req.session.user.id
+        })
+        .then(function (data) {
             res.json(data);
         }).catch(function (err) {
             res.json(err);
+            console.log(err); 
         });
     });
 

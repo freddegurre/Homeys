@@ -25,14 +25,7 @@ module.exports = function(app){
         });
     });
 
-    /*app.get("api/owners", function(req, res){
-        
-        db.Owner.findOne({
-            where: {
-                id: req.session.user.id
-            }
-        })
-    }); */
+    
 
 
     //Create new owner
