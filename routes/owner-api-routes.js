@@ -26,8 +26,6 @@ module.exports = function(app){
     });
 
     
-
-
     //Create new owner
     app.post("/api/owners", function (req, res){
         //console.log(req.body); 
@@ -53,7 +51,6 @@ module.exports = function(app){
     });
     //Login route 
     app.post("/api/login", function(req, res){
-
         
         db.Owner.findOne({
             where: {
@@ -76,6 +73,8 @@ module.exports = function(app){
             res.json(err);
         }); 
     }); 
+
+    
     // delete owner 
     app.delete("/api/owners/:id", function(req, res){
         db.Owner.destroy({
