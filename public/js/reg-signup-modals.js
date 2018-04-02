@@ -8,7 +8,7 @@ $("#signup").on("click", function(event){
       
       var Owner = {
         user_name: $("#user_name").val().trim(),
-        email: $("#email").val().trim(),
+        email: $("#emailRegister").val().trim(),
         pass: $("#pass").val().trim(),
        };
 
@@ -26,12 +26,47 @@ $("#signup").on("click", function(event){
             alert("Please Try Again");
           }
           $("#user_name").val("");
-          $("#email").val("");
+          $("#emailRegister").val("");
           $("#pass").val("");
 
         });
 
     });
+
+    $("#logInOwner").on("click", function(event){
+      event.preventDefault();
+      $("#loginOwner").modal();
+    });
+
+    $(".submitLogin").on("click", function(event){
+      event.preventDefault(); 
+
+      var login = {
+          user_name: $("#user").val().trim(),
+          pass: $("#passWord").val().trim()
+      }
+  console.log(login); 
+ 
+  $.post("/api/login", login, function (data) {
+  console.log(data);
+        if (data) {
+          console.log("loged in"); 
+           
+        Redirect("/profile")
+
+        }
+
+        else {
+          alert("Invalid Login");
+        }
+
+        $("#user_name").val("");
+        $("#pass").val("");
+
+      });
+
+  });
+
     
   function Redirect(where){
     window.location=where;
