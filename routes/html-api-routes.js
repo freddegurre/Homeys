@@ -42,8 +42,30 @@ module.exports = function(app) {
       res.sendFile(path.join(__dirname, "../public/profile.html"));
     }
     
+  });  
+  
+  //---------------PROVIDER-------
+
+  //provider signup loads the form for providers to signup, this hould become popup on indix!
+  app.get("/provider/signup", function(req, res){
+    res.sendFile(path.join(__dirname, "../public/provider.html" ))
+  })
+
+  //Login provider
+  app.get("/provider-login", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/provider-login.html"));
   });
 
+  //Provider profile page is only acsessable when user is loged in
+  app.get("/provider-profile", function(req, res) {
+    if (!req.session.user) {
+    res.send("you have to login"); 
+     res.status(401); 
+    }else {
+      res.sendFile(path.join(__dirname, "../public/provider-profile.html"));
+    }
+    
+  });
 
 
 };

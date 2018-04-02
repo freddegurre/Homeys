@@ -14,6 +14,13 @@ module.exports = function (sequelize, DataTypes ) {
                 msg: 'Name already in use!'
             },
         },
+        pass: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [6, 20]
+            }
+        },
         zipCode: {
             type: DataTypes.INTEGER, 
             allowNull: false,
