@@ -8,17 +8,29 @@ var db = require("../models");
 module.exports = function(app) {
 
 
-  // index route loads view.html
+  // when loading wbesite, check if user has session if they dont load home page otherwise load profile page. 
   app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    if (!req.session.user) {
+      res.sendFile(path.join(__dirname, "../public/home.html"));
+    }else {
+      db.Owner.findOne({
+        where: {
+          id: req.session.user.id
+        },
+        include: [db.Property]
+      }).then(function(data) {
+        var propObj = {
+          allProperties: data.Properties,
+          email: data.dataValues.email,
+          user_name: data.dataValues.user_name
+        }
+        res.render("profile", propObj)
+        
+      });
+    }
+    
   });
 
-  // owner/signup loads the form for owners to sign up this should become popup modal on index file!
-  app.get("/owner/signup", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/owner.html"));
-  });
-
-  // For owner to register property page, to reach this they have to be loged in!
   app.get("/property", function(req, res) {
     if (!req.session.user) {
       res.send("you have to login"); 
