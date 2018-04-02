@@ -31,7 +31,26 @@ module.exports = function(app) {
 
   // Owner login, this should also be popup modal on index.html
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    if (!req.session.user) {
+       res.sendFile(path.join(__dirname, "../public/login.html"));
+      }else {
+        db.Owner.findOne({
+          where: {
+            id: req.session.user.id
+          },
+          include: [db.Property]
+        }).then(function(data) {
+          console.log(data)
+          var propObj = {
+            allProperties: data.Properties,
+            email: data.dataValues.email,
+            user_name: data.dataValues.user_name
+          }
+          res.render("profile", propObj)
+          
+        })
+      }
+    
   });
 
   //owner profile page, is only acsessable when user is loged in
