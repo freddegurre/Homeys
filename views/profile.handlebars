@@ -59,10 +59,10 @@
         </div>
 </section>
 
-  
+  <button type="submit" class="btn btn-primary floating-btn addProp"><h3>Add Property!</h3></button>
     <section class="bg-light" id="portfolio">
       <div class="container">
-
+        
         {{#each allProperties}}  
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -89,8 +89,6 @@
             </div>
           </div>
           {{/each}}
-
-
 
           <div class="col-md-4 col-sm-6 portfolio-item">
             <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
@@ -209,6 +207,58 @@
         </div>
       </div>
     </footer>
+
+  <!--  Modals Add/edit Property -->
+  <div id="addEditDeleteProp" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Property!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        </div>
+        <div class="modal-body">
+          <form role="form">
+
+                            <div class="form-group">
+                                <label for="propName">Property Name</label>
+                                <input type="text" class="form-control" id="propName">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="streetAddress">Street Address</label>
+                                <input type="text" class="form-control" id="streetAddress">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="text" class="form-control" id="zipCode">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" id="state">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary submitProp">Create</button>
+                        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
     </body>
     <script type="text/javascript">
 

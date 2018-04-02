@@ -692,3 +692,10 @@ ul.social-buttons li a {
 ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons li a:hover {
   background-color: #fed136;
 }
+
+.floating-btn {
+  border-radius: 50%;
+  height: 130px;
+  position: fixed; bottom: auto; right: 8px; 
+  z-index: 100000;
+}
