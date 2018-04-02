@@ -1,0 +1,80 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1 class="text-center">
+            <span class="glyphicon glyphicon-fire"></span> Profile </h1>
+        <br>
+
+        <div class="text-center">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">User Profile </h4>
+                    <div class="panel-body" id="userProfile">
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Properties</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Property Name</th>
+                                    <th>Street Address</th>
+                                    <th>Zip Code</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each allProperties}}
+                                <tr>
+                                    <td>{{propName}}</td>
+                                    <td>{{streetAddress}}</td>
+                                    <td>{{zipCode}}</td>
+                                    <td>{{city}}</td>
+                                    <td>{{state}}</td>
+                                    
+                                    {{/each}}
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        {{!--
+                        <ul class="owners-properties">
+                            {{#each allProperties}} {{/each}}
+                        </ul> --}}
+                    </div>
+                    <div class="panel-body" id="propertyProfile">
+                        <a href="./Property" title="">this is to register new property.</a>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    <a> Homeys Copyright 2018</a>
+                </p>
+            </div>
+        </footer>
+
+    </div>
+
+    </body>
+
+
+
+    <script type="text/javascript">
+    </script>
+
+    </html>

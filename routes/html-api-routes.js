@@ -1,6 +1,7 @@
 // Dependencies
 // =============================================================
 var path = require("path");
+var db = require("../models");
 
 // Routes
 // =============================================================
@@ -39,7 +40,20 @@ module.exports = function(app) {
     res.send("you have to login"); 
      res.status(401); 
     }else {
-      res.sendFile(path.join(__dirname, "../public/profile.html"));
+      console.log('the profile page is here' + req.session.user)
+      db.Owner.findOne({
+        where: {
+          id: req.session.user.id
+        },
+        include: [db.Property]
+      }).then(function(data) {
+        var propObj = {
+          allProperties: data.Properties
+        }
+        res.render("profile", propObj)
+        
+      })
+      //res.sendFile(path.join(__dirname, "../public/profile.html"));
     }
     
   });  
