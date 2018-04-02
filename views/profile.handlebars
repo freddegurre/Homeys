@@ -34,24 +34,21 @@
                                     <th>State</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class= "prop-table">
                                 {{#each allProperties}}
-                                <tr>
-                                    <td>{{propName}}</td>
-                                    <td>{{streetAddress}}</td>
-                                    <td>{{zipCode}}</td>
-                                    <td>{{city}}</td>
-                                    <td>{{state}}</td>
+                                <tr >
+                                    <td class="prop-info">{{propName}}</td>
+                                    <td class="prop-info">{{streetAddress}}</td>
+                                    <td class="prop-info">{{zipCode}}</td>
+                                    <td class="prop-info">{{city}}</td>
+                                    <td class="prop-info">{{state}}</td>
                                     
                                     {{/each}}
                                 </tr>
 
                             </tbody>
                         </table>
-                        {{!--
-                        <ul class="owners-properties">
-                            {{#each allProperties}} {{/each}}
-                        </ul> --}}
+
                     </div>
                     <div class="panel-body" id="propertyProfile">
                         <a href="./Property" title="">this is to register new property.</a>
@@ -60,7 +57,6 @@
                 </div>
             </div>
         </div>
-
 
         <footer class="footer">
             <div class="container">
@@ -71,12 +67,13 @@
         </footer>
 
     </div>
-
     </body>
-
-
-
     <script type="text/javascript">
+
+    if ( $(".prop-info").length ===0 ) {
+        $(".prop-table").html("<h3> Click below to add your first property!</h3>")
+    }   
+
     </script>
 
     </html>
