@@ -47,8 +47,11 @@ module.exports = function(app) {
         },
         include: [db.Property]
       }).then(function(data) {
+        console.log(data)
         var propObj = {
-          allProperties: data.Properties
+          allProperties: data.Properties,
+          email: data.dataValues.email,
+          user_name: data.dataValues.user_name
         }
         res.render("profile", propObj)
         
