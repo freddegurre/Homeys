@@ -13,8 +13,6 @@ module.exports = function (app) {
 
     //Create a new property
     app.post("/api/properties", function (req, res) {
-        console.log(req.body);
-        console.log(req.session.user.id); 
        db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
@@ -33,8 +31,7 @@ module.exports = function (app) {
 
     //Update a property
     app.put('/api/property/:id', function (req, res) {
-        console.log(req.body); 
-        dp.Property.update({
+        db.Property.update(req.body,{
             where: {
                 id: req.params.id
             }

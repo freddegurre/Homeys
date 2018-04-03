@@ -1,15 +1,17 @@
-//-------- ADD property----------
-$(".addProp").on("click", function(event){
-    $("#propName").attr("placeholder", "");
-        $("#streetAddress").attr("placeholder","");
-        $("#zipCode").attr("placeholder","");
-        $("#city").attr("placeholder", "");
-        $("#state").attr("placeholder", "");
-    event.preventDefault();
-    $("#addEditDeleteProp").modal();
-  });
 
-  $(".submitProp").on("click", function (event) {
+//-------- ADD property----------
+$(document).on('click', '.addProp', function (event) {
+    event.preventDefault();
+    $("#updateProp").hide();
+    $("#propName").val("");
+    $("#streetAddress").val("");
+    $("#zipCode").val("");
+    $("#city").val("")
+    $("#state").val("")
+    $("#addEditDeleteProp").modal();
+});
+//---- ADDD new Property
+$(document).on('click', '#addProp', function (event) {
     event.preventDefault();
 
     var Property = {
@@ -20,64 +22,69 @@ $(".addProp").on("click", function(event){
         state: $("#state").val().trim(),
     };
 
-    console.log(Property);
-
     $.post("/api/properties", Property,
         function (data) {
 
             if (data) {
-                Redirect("/profile"); 
+                Redirect("/profile");
 
             }
 
             else {
                 alert("Please Try Again");
             }
-            $("#propName").val("");
-            $("#streetAddress").val("");
-            $("#zipCode").val("");
-            $("#city").val("");
-            $("#state").val("");
 
         });
 
 });
 //----- edit property -----
-$("#editProp").on("click", function(event){
-    var deleteBtn = $("<button>Delete</button>"); 
+$(document).on('click', '#editProp', function (event) {
+    $("#addProp").hide();
+    /*var deleteBtn = $("<button>Delete</button>"); 
     deleteBtn.addClass("deleteProp"); 
     $(".modal-body").append(deleteBtn); 
-    event.preventDefault();
+    event.preventDefault();*/
     var id = $(this).data("id");
-    $.get("/api/properties/" + id, function(data){
-        console.log(data); 
-        $("#propName").attr("placeholder", data.propName);
-        $("#streetAddress").attr("placeholder", data.streetAddress);
-        $("#zipCode").attr("placeholder", data.zipCode);
-        $("#city").attr("placeholder", data.city);
-        $("#state").attr("placeholder", data.state);
+    $.get("/api/properties/" + id, function (data) {
+        $("#propName").val(data.propName);
+        $("#streetAddress").val(data.streetAddress);
+        $("#zipCode").val(data.zipCode);
+        $("#city").val(data.city);
+        $("#state").val(data.state);
         $("#addEditDeleteProp").modal();
     })
-    $(".submitProp").on("click", function(event){   
+    $(document).on('click', '#updateProp', function (event) {
         event.preventDefault();
-        var Property = {
-            propName: $("#propName").val().trim(),
-            streetAddress: $("#streetAddress").val().trim(),
-            zipCode: $("#zipCode").val().trim(),
-            city: $("#city").val().trim(),
-            state: $("#state").val().trim(),
-        };
-        
-        
+        console.log("update has beeen klicked")
+        updateProp();
+
+        function updateProp() {
+            console.log(id);
+            $.ajax({
+                method: "PUT",
+                url: "/api/property/" + id,
+                data: {
+                    propName: $("#propName").val().trim(),
+                    streetAddress: $("#streetAddress").val().trim(),
+                    zipCode: $("#zipCode").val().trim(),
+                    city: $("#city").val().trim(),
+                    state: $("#state").val().trim(),
+                }
+            }).then(function () {
+                    Redirect("/profile");
+                });
+               
+        }
+
+
+
+
     })
 
 
 
-  
-
-
-    
-  });
-function Redirect(where){
-window.location=where;
+});
+function Redirect(where) {
+    window.location = where;
 }
+

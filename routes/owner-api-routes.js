@@ -21,7 +21,6 @@ module.exports = function(app){
             include: [db.Property]
         }).then(function(data){
             res.json(data.dataValues); 
-            console.log(data.dataValues); 
         });
     });
 
@@ -37,7 +36,6 @@ module.exports = function(app){
                 token: token
             })
             .then(function(data){
-                console.log(data.dataValues)
                 res.cookie("token", token, {maxAge:9999})
                 req.session.user = data.dataValues;
                 res.json(req.session.user); 
