@@ -62,7 +62,7 @@ module.exports = function (app) {
             pic3: shorturlpaths[2],
         })
             .then(function (data) {
-                res.json(data);
+                //res.json(data);
                 res.redirect("/profile")
             }).catch(function (err) {
                 res.json(err);
