@@ -3,6 +3,8 @@
 $(document).on('click', '.addProp', function (event) {
     event.preventDefault();
     $("#updateProp").hide();
+    $("#deleteProp").hide();
+    $("#addProp").show();
     $("#propName").val("");
     $("#streetAddress").val("");
     $("#zipCode").val("");
@@ -24,26 +26,19 @@ $(document).on('click', '#addProp', function (event) {
 
     $.post("/api/properties", Property,
         function (data) {
-
             if (data) {
                 Redirect("/profile");
-
             }
-
             else {
                 alert("Please Try Again");
             }
-
         });
 
 });
 //----- edit property -----
 $(document).on('click', '#editProp', function (event) {
     $("#addProp").hide();
-    /*var deleteBtn = $("<button>Delete</button>"); 
-    deleteBtn.addClass("deleteProp"); 
-    $(".modal-body").append(deleteBtn); 
-    event.preventDefault();*/
+    event.preventDefault();
     var id = $(this).data("id");
     $.get("/api/properties/" + id, function (data) {
         $("#propName").val(data.propName);
@@ -73,13 +68,23 @@ $(document).on('click', '#editProp', function (event) {
             }).then(function () {
                     Redirect("/profile");
                 });
-               
         }
-
-
-
-
     })
+    $(document).on('click', '#deleteProp', function (event){
+        console.log("yayy" + id); 
+        event.preventDefault();
+        deletePro(); 
+        function deletePro() {
+            console.log(id);
+            $.ajax({
+                method: "DELETE",
+                url: "/api/properties/" + id,
+            }).then(function () {
+                    Redirect("/profile");
+                });
+        }
+    });
+
 
 
 

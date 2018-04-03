@@ -42,6 +42,7 @@ module.exports = function (app) {
 
     //Delete a property
     app.delete('/api/properties/:id', function (req, res) {
+        console.log(req.params.id)
         db.Property.destroy ({
             where: {
                 id: req.params.id
