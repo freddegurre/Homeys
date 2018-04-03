@@ -13,28 +13,28 @@ $(document).on('click', '.addProp', function (event) {
     $("#addEditDeleteProp").modal();
 });
 //---- ADDD new Property
-$(document).on('click', '#addProp', function (event) {
-    event.preventDefault();
+// $(document).on('click', '#addProp', function (event) {
+//     event.preventDefault();
 
-    var Property = {
-        propName: $("#propName").val().trim(),
-        streetAddress: $("#streetAddress").val().trim(),
-        zipCode: $("#zipCode").val().trim(),
-        city: $("#city").val().trim(),
-        state: $("#state").val().trim(),
-    };
+//     var Property = {
+//         propName: $("#propName").val().trim(),
+//         streetAddress: $("#streetAddress").val().trim(),
+//         zipCode: $("#zipCode").val().trim(),
+//         city: $("#city").val().trim(),
+//         state: $("#state").val().trim(),
+//     };
 
-    $.post("/api/properties", Property,
-        function (data) {
-            if (data) {
-                Redirect("/profile");
-            }
-            else {
-                alert("Please Try Again");
-            }
-        });
+//     $.post("/api/properties", Property,
+//         function (data) {
+//             if (data) {
+//                 Redirect("/profile");
+//             }
+//             else {
+//                 alert("Please Try Again");
+//             }
+//         });
 
-});
+// });
 //----- edit property -----
 $(document).on('click', '#editProp', function (event) {
     $("#addProp").hide();

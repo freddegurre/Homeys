@@ -44,7 +44,16 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1, 20],
                 //msg: 'Please enter a valid state.'
             },
-        }
+        },
+        pic1 : {
+            type: DataTypes.TEXT
+        },
+        pic2 : {
+            type: DataTypes.TEXT
+        },
+        pic3 : {
+            type: DataTypes.TEXT
+        },
     });
 
     Property.associate = function(models) {
