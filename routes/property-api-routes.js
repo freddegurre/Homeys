@@ -1,6 +1,13 @@
 //Routes for viewing property info
-var db = require("../models"); 
+var db = require("../models");
 var path = require("path");
+var geocoder = require('google-geocoder');
+var geodist = require('geodist')
+
+var geo = geocoder({
+    key: 'AIzaSyConfTJBxXd2JOwcungPSU_4XS-e4CrS24'
+});
+
 
 module.exports = function (app) {
 
@@ -14,8 +21,8 @@ module.exports = function (app) {
     //Create a new property
     app.post("/api/properties", function (req, res) {
         console.log(req.body);
-        console.log(req.session.user.id); 
-       db.Property.create({
+        console.log(req.session.user.id);
+        db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
             zipCode: req.body.zipCode,
@@ -23,12 +30,12 @@ module.exports = function (app) {
             state: req.body.state,
             OwnerId: req.session.user.id
         })
-        .then(function (data) {
-            res.json(data);
-        }).catch(function (err) {
-            res.json(err);
-            console.log(err); 
-        });
+            .then(function (data) {
+                res.json(data);
+            }).catch(function (err) {
+                res.json(err);
+                console.log(err);
+            });
     });
 
     //Update a property
@@ -39,23 +46,93 @@ module.exports = function (app) {
                 where: {
                     id: req.body.ud
                 }
-            }).then(function(data){
+            }).then(function (data) {
                 res.json(data)
             })
     });
 
     //Delete a property
     app.delete('/api/properties/:id', function (req, res) {
-        db.Property.destroy ({
+        db.Property.destroy({
             where: {
                 id: req.params.id
             }
-        }).then(function(data){
+        }).then(function (data) {
             res.json(data);
         })
+    });
+
+    var proplat;
+    var proplng;
+    var lat;
+    var lng;
+    var houseLocation = {};
+    var sitterLocation = {};
+    var dist=0;
+    var closest = 1000;
+    var closestSitter;
+    
+
+    //Find sitter
+    app.get('/find-homey', function (req, res) {
+        //Get house zip code to lat/long
+        var propZip = 93109;
+        geo.find(propZip, function (err, result) {
+            proplat = result[0].location.lat;
+            proplng = result[0].location.lat;
+            houseLocation = { lat: proplat, long: proplng }
+            console.log("here it is for the house lat " + proplat + "and long:  " + proplng)
+        });
+
+        //Get sitter zip codes and turn them to lat.long
+        db.Provider.findAll({}).then(function (data) {
+            //res.send(data);
+            //convert zipCodes to latitude longitude for all sitters
+            var zipCodes = [];
+         
+            
+            for (i = 0; i < data.length; i++) {
+
+                //get lat/long of sitter
+                geo.find(data[i].zipCode, function (err, result) {
+                    
+                    lat = result[0].location.lat;
+                    lng = result[0].location.lat;
+                    console.log(`sitter lat is ${lat}`);
+                    console.log(`sitter lng is ${lng}`);
+                    sitterLocation = { lat: lat, long: lng }
+
+                    //Calculate distance between sitter and house
+                    dist = geodist(houseLocation, sitterLocation)
+                    console.log(dist);
+
+                    //Determine which sitter is closet to the home
+                    if (dist < closest) {
+                        closest = dist;
+                        //closestSitter = data[i].dataValues.name;
+                        //console.log(`the cloeset one is ${closestSitter}`);
+                    }; 
+                });  
+                
+            };
+            
+            console.log(closest);
+            
+
+
+            res.end();
+
+        }).then(function (data) {
+
+
+
+        })
+
     })
 
 }
+
+
 
 
 
