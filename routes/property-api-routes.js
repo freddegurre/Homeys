@@ -20,9 +20,7 @@ module.exports = function (app) {
 
     //Create a new property
     app.post("/api/properties", function (req, res) {
-        console.log(req.body);
-        console.log(req.session.user.id);
-        db.Property.create({
+       db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
             zipCode: req.body.zipCode,
@@ -39,21 +37,20 @@ module.exports = function (app) {
     });
 
     //Update a property
-    app.put('/api/property', function (req, res) {
-        dp.Property.update(
-            req.body,
-            {
-                where: {
-                    id: req.body.ud
-                }
-            }).then(function (data) {
+    app.put('/api/property/:id', function (req, res) {
+        db.Property.update(req.body,{
+            where: {
+                id: req.params.id
+            }
+            }).then(function(data){
                 res.json(data)
             })
     });
 
     //Delete a property
     app.delete('/api/properties/:id', function (req, res) {
-        db.Property.destroy({
+        console.log(req.params.id)
+        db.Property.destroy ({
             where: {
                 id: req.params.id
             }
@@ -128,6 +125,17 @@ module.exports = function (app) {
 
         })
 
+    })
+
+    //Get one property a property
+    app.get('/api/properties/:id', function (req, res) {
+        db.Property.findOne ({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(data){
+            res.json(data);
+        }); 
     })
 
 }
