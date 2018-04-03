@@ -9,8 +9,21 @@ var multerConf = {
         },
         filename: function (req, file, next) {
             console.log(file);
+            const ext = file.mimetype.split('/')[1];
+            next(null, file.fieldname + "-" + Date.now() + "." + ext)
         }
-    })
+    }),
+    fileFilter: function (req, file, next) {
+        if (!file) {
+            next();
+        }
+        const image = file.mimetype.startsWith('image/');
+        if (image) {
+            next(null, true);
+        } else {
+            next({ message: "file type not supported" }, false)
+        }
+    }
 }
 
 
@@ -32,30 +45,33 @@ module.exports = function (app) {
                 id: req.session.user.id
             },
             include: [db.Property]
-        }).then(function(data){
-            res.json(data.dataValues); 
+        }).then(function (data) {
+            res.json(data.dataValues);
         });
     });
 
 
     //Create new owner
-    app.post("/api/owners", multer(multerConf).single('avatar'),function (req, res) {
+    app.post("/api/owners", multer(multerConf).single('avatar'), function (req, res) {
         //console.log(req.body); 
         var token = "t " + Math.random();
-
-
+        console.log(req);
+        if (req.file) {
+            console.log(req.file)
+        }
         db.Owner.create({
             email: req.body.email,
             user_name: req.body.user_name,
             pass: req.body.pass,
-            url: req.body.url,
+            url: req.file.path, 
             token: token
         })
             .then(function (data) {
                 //console.log(data.dataValues)
                 res.cookie("token", token, { maxAge: 9999 })
                 req.session.user = data.dataValues;
-                res.json(req.session.user);
+                res.redirect('/profile')
+                
             }).catch(function (err) {
                 res.json(err);
             })
