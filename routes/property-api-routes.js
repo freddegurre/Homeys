@@ -68,10 +68,10 @@ module.exports = function (app) {
     var lng;
     var houseLocation = {};
     var sitterLocation = {};
-    var dist=0;
+    var dist = 0;
     var closest = 1000;
     var closestSitter;
-    
+    var i=0
 
     //Find sitter
     app.get('/find-homey', function (req, res) {
@@ -81,53 +81,47 @@ module.exports = function (app) {
             proplat = result[0].location.lat;
             proplng = result[0].location.lat;
             houseLocation = { lat: proplat, long: proplng }
-            console.log("here it is for the house lat " + proplat + "and long:  " + proplng)
         });
 
         //Get sitter zip codes and turn them to lat.long
         db.Provider.findAll({}).then(function (data) {
-            //res.send(data);
-            //convert zipCodes to latitude longitude for all sitters
-            var zipCodes = [];
-         
-            
-            for (i = 0; i < data.length; i++) {
-
+            for ( i = 0; i < data.length; i++) {
                 //get lat/long of sitter
-                geo.find(data[i].zipCode, function (err, result) {
-                    
+                geo.find(data[i].zipCode, function (err, result, callback) {
+                    console.log('geocode happening now')
                     lat = result[0].location.lat;
                     lng = result[0].location.lat;
-                    console.log(`sitter lat is ${lat}`);
-                    console.log(`sitter lng is ${lng}`);
-                    sitterLocation = { lat: lat, long: lng }
+                    sitterLocation = { lat: lat, long: lng };
 
                     //Calculate distance between sitter and house
-                    dist = geodist(houseLocation, sitterLocation)
-                    console.log(dist);
+                    dist = geodist(houseLocation, sitterLocation);
 
-                    //Determine which sitter is closet to the home
-                    if (dist < closest) {
-                        closest = dist;
-                        //closestSitter = data[i].dataValues.name;
-                        //console.log(`the cloeset one is ${closestSitter}`);
-                    }; 
-                });  
-                
+                    if (result) {
+                        //Determine which sitter is closet to the home
+                        if (dist < closest) {
+                            console.log('distance ranking happening now');
+                            console.log(`currently on loop index: ${i}`);
+                            closest = dist;
+                            closestSitter = data[i];
+                            console.log(`the new distance to beat is ${closest}`);
+                            console.log(`the new sitter is ${JSON.stringify(closestSitter)}`);
+                        };
+                    } else if (err) {
+                        console.log("there was an error geocoding :( ");
+                    } else {
+                        console.log('something else went wrong');
+                    }
+
+
+
+                });
+
+
             };
-            
-            console.log(closest);
-            
-
-
             res.end();
 
         }).then(function (data) {
-
-
-
         })
-
     })
 
 }
