@@ -431,21 +431,21 @@
 
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form role="form" method='POST' action='/api/owners' enctype='multipart/form-data'>
 
             <div class="form-group">
               <label for="user_name">User Name</label>
-              <input type="text" class="form-control" id="user_name">
+              <input name = "user_name" type="text" class="form-control" id="user_name">
             </div>
 
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" id="emailRegister">
+              <input name = "email" type="text" class="form-control" id="emailRegister">
             </div>
 
             <div class="form-group">
               <label for="pass">Password</label>
-              <input type="text" class="form-control" id="pass">
+              <input name = "pass" type="text" class="form-control" id="pass">
             </div>
 
             <div class="form-group">
@@ -455,7 +455,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary submitNewUser" method='POST' action='/uploadPhoto' enctype='multipart/form-data'>Submit</button>
+            <button type="submit" value = "submit" class="btn btn-primary submitNewUser">Submit</button>
           </form>
         </div>
         <div class="modal-footer">
