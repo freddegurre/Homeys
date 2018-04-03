@@ -45,7 +45,11 @@ module.exports = function (app) {
 
     //Create a new property
     app.post("/api/properties", multer(multerConf).array('homePics', 3), function (req, res) {
-        console.log(req.files); 
+        //console.log(req.files); 
+       var shorturlpaths = [];
+        for (i=0 ;i<req.files.length; i++) {
+            shorturlpaths.push(req.files[i].path.replace('public',""));  
+        };
         db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
@@ -53,12 +57,13 @@ module.exports = function (app) {
             city: req.body.city,
             state: req.body.state,
             OwnerId: req.session.user.id, 
-            pic1: req.files[0].path,
-            pic2: req.files[1].path,
-            pic3: req.files[2].path,
+            pic1: shorturlpaths[0],
+            pic2: shorturlpaths[1],
+            pic3: shorturlpaths[2],
         })
             .then(function (data) {
                 res.json(data);
+                res.redirect("/profile")
             }).catch(function (err) {
                 res.json(err);
                 console.log(err);

@@ -44,17 +44,25 @@ module.exports = function(app) {
         where: {
           id: req.session.user.id
         },
+        
         include: [db.Property]
       }).then(function(data) {
-        console.log(data.dataValues.url);
+        console.log(data.get({plain: true}));
+        //loop through data.Properties to get all the 
+       
         var shortUrl = data.dataValues.url.replace("public", "");
+        var homePics = [];
+        homePics.push(data.Properties)
 
         var propObj = {
           allProperties: data.Properties,
           email: data.dataValues.email,
           user_name: data.dataValues.user_name,
-          url: shortUrl
+          url: shortUrl,
+
         }
+      
+      
         res.render("profile", propObj)
         
       })
