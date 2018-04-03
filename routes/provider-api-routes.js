@@ -48,5 +48,13 @@ module.exports = function (app) {
         }); 
     }); 
 
+    //get all providers
+    app.get("/api/sitters", function(req, res){
+        db.Provider.findAll({}).then(function (data) {
+        console.log(data); 
+        res.json(data); 
+    })
+    })
+
 
 };

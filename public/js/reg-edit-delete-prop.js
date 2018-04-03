@@ -37,6 +37,8 @@ $(document).on('click', '#addProp', function (event) {
 });
 //----- edit property -----
 $(document).on('click', '#editProp', function (event) {
+    $("#updateProp").show();
+    $("#deleteProp").show();
     $("#addProp").hide();
     event.preventDefault();
     var id = $(this).data("id");

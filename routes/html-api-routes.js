@@ -98,8 +98,24 @@ module.exports = function(app) {
         res.render("provider-profile", homey)
       })
     }
-    
   });
+
+  app.get("/select-homey", function(req, res){
+      if (!req.session.user) {
+        res.send("you have to login"); 
+         res.status(401); 
+        }else{
+         db.Provider.findAll({}).then(function (data){
+          for (var i = 0; i < data.length; i++){
+            homeys.push(data[i].dataValues); 
+          }
+          console.log(homeys);
+          var homeys = [];
+          res.render("find-homey", {homeys:data}); 
+         });
+        }
+    });
+
 
 
 };
