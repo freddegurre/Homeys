@@ -46,11 +46,14 @@ module.exports = function(app) {
         },
         include: [db.Property]
       }).then(function(data) {
-        console.log(data)
+        console.log(data.dataValues.url);
+        var shortUrl = data.dataValues.url.replace("public", "");
+
         var propObj = {
           allProperties: data.Properties,
           email: data.dataValues.email,
-          user_name: data.dataValues.user_name
+          user_name: data.dataValues.user_name,
+          url: shortUrl
         }
         res.render("profile", propObj)
         
