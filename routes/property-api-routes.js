@@ -102,7 +102,7 @@ module.exports = function (app) {
     var dist = 0;
     var closest = 1000;
     var closestSitter;
-    var i=0
+   
 
     //Find sitter
     app.get('/find-homey', function (req, res) {
@@ -116,9 +116,15 @@ module.exports = function (app) {
 
         //Get sitter zip codes and turn them to lat.long
         db.Provider.findAll({}).then(function (data) {
-            for ( i = 0; i < data.length; i++) {
+            var numberOfSitters = data.length;
+            console.log(data.length);
+            var counter = 0
+
+            findClosest();
+
+            function findClosest () {
                 //get lat/long of sitter
-                geo.find(data[i].zipCode, function (err, result, callback) {
+                geo.find(data[counter].zipCode, function (err, result, callback) {
                     console.log('geocode happening now')
                     lat = result[0].location.lat;
                     lng = result[0].location.lat;
@@ -127,28 +133,24 @@ module.exports = function (app) {
                     //Calculate distance between sitter and house
                     dist = geodist(houseLocation, sitterLocation);
 
-                    if (result) {
-                        //Determine which sitter is closet to the home
-                        if (dist < closest) {
-                            console.log('distance ranking happening now');
-                            console.log(`currently on loop index: ${i}`);
-                            closest = dist;
-                            closestSitter = data[i];
-                            console.log(`the new distance to beat is ${closest}`);
-                            console.log(`the new sitter is ${JSON.stringify(closestSitter)}`);
-                        };
-                    } else if (err) {
-                        console.log("there was an error geocoding :( ");
-                    } else {
-                        console.log('something else went wrong');
+                    //Determine which sitter is closet to the home
+                    if (dist < closest) {
+                        console.log('distance ranking happening now');
+                        closest = dist;
+                        closestSitter = data[counter];
+                        console.log(`the new distance to beat is ${closest}`);
+                        console.log(`the new sitter is ${JSON.stringify(closestSitter)}`);
+                    };
+                    counter ++;
+                    console.log('counter has been updated to: '+counter)
+                    if (counter < numberOfSitters) {
+                        findClosest();
+                    } else if (counter >= numberOfSitters) {
+                        counter = 0;
                     }
-
-
-
                 });
-
-
-            };
+            };  
+                        
             res.end();
 
         }).then(function (data) {
