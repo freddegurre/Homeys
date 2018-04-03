@@ -3,7 +3,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">My Profile</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">My Owner Profile</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
           <i class="fa fa-bars"></i>
@@ -27,11 +27,11 @@
           <div class="col-sm-4">
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/Bianca.png" alt="">
-              <h4>UserName:  {{user_name}}</h4>
-              <p class="text-muted">Email:  {{email}}</p>
+              <h4>{{user_name}}</h4>
+              <p class="text-muted">{{email}}</p>
             
               <div class="description text-center">
-                <h5><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></h5>
+                <h5><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p></h5>
               </div>
             </div>
           </div>
@@ -50,72 +50,80 @@
       <div class="container">
         
         {{#each allProperties}}  
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">{{propName}}</h2>
-            <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
-            <a class="btn btn-primary btn-md text-uppercase" id= "signup" data-zipCode={{zipCode}} href="#services">Find a Homey</a>
-            <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
-            <p></p>
-          </div>
-        </div>
-        
-        <div class="row">  
+         <div class="row">  
 
           <div class="container">
             
-            <div class="col-lg-8 text-center" align="center">
+            <div class="col-lg-6 text-center" align="center">
             {{!-- <h2>Carousel Example</h2>   --}}
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-              <!-- Indicators -->
-              <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-              </ol>
+              <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
 
-              <!-- Wrapper for slides -->
-              <div class="carousel-inner">
-                <div class="item active" align="middle">
-                  <img src="img/portfolio/06-thumbnail.jpg" alt="Los Angeles" style="width:75%; height:100%;">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active" align="middle">
+                    <img src="img/portfolio/Dream_home1.jpg" alt="Los Angeles" style="width:100%; height:100%;">
+                  </div>
+
+                  <div class="item" align="middle">
+                    <img src="img/portfolio/Dream_home2.jpg" alt="Chicago" style="width:100%; height:100%;">
+                  </div>
+                
+                  <div class="item" align="middle">
+                    <img src="img/portfolio/Dream_home3.jpg" alt="New york" style="width:100%; height:100%;">
+                  </div>
                 </div>
 
-                <div class="item" align="middle">
-                  <img src="img/portfolio/05-thumbnail.jpg" alt="Chicago" style="width:75%; height:100%;">
-                </div>
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+
+        <div class="row">
+          <div class="propertyInfo">
+            
+            <div class="col-lg-12 text-center">
               
-                <div class="item" align="middle">
-                  <img src="img/portfolio/04-thumbnail.jpg" alt="New york" style="width:75%; height:100%;">
-                </div>
+              <h2 class="section-heading text-uppercase">{{propName}}</h2>
+              <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
+              <a class="btn btn-primary btn-md text-uppercase" id= "signup" data-zipCode={{zipCode}} href="#services">Find a Homey</a>
+              <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
+              
+              <div class="col-lg-12 text-center" align="right">
+                <h5>Tasks for this property</h5>
+                <p></p>
+                <h6>
+                  {{Tasks}}
+                </h6>
               </div>
 
-              <!-- Left and right controls -->
-              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-              </a>
             </div>
-            </div>
-            {{/each}}
+          </div>
+        </div>
+        
+       
+            
 
             
-            <div class="col-lg-4 text-center" align="right">
-              <h5>Tasks for this property</h5>
-              <p></p>
-              <h6>
-                {{Tasks}}
-              </h6>
-
-            </div>
+            
           </div>
 
           
 
         </div>
+        {{/each}}
       </div>
     </section>
     
