@@ -1,71 +1,78 @@
 <body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">My Profile</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">My Profile</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+
+  </header>
+  <div class="row">
+
+    <div class="col-sm-4">
+      <div class="team-member">
+
       </div>
-    </nav>
+    </div>
 
-    <!-- Header -->
-    <header class="masthead">
-      
-    </header>
-        <div class="row">
-          
-          <div class="col-sm-4">
-            <div class="team-member">
-              
-            </div>
-          </div>
- 
-          <div class="col-sm-4">
-            <div class="team-member">
-              <img class="mx-auto rounded-circle" src={{url}} alt="">
-              <h4>UserName:  {{user_name}}</h4>
-              <p class="text-muted">Email:  {{email}}</p>
-            
-              <div class="description text-center">
-                <h5><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></h5>
-              </div>
-            </div>
-          </div>
+    <div class="col-sm-4">
+      <div class="team-member">
+        <img class="mx-auto rounded-circle" src={{url}} alt="">
+        <h4>UserName: {{user_name}}</h4>
+        <p class="text-muted">Email: {{email}}</p>
 
-          <div class="col-sm-4">
-            <div class="team-member">
-              
-            </div>
-          </div>
-
+        <div class="description text-center">
+          <h5>
+            <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis,
+              totam corporis ea, alias ut unde.</p>
+          </h5>
         </div>
-</section>
+      </div>
+    </div>
 
-  <button type="submit" class="btn btn-primary floating-btn addProp"><h3>Add Property!</h3></button>
-    <section class="bg-light" id="portfolio">
-      <div class="container">
-        
-        {{#each allProperties}}  
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">{{propName}}</h2>
-            <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
-            <a class="btn btn-primary btn-md text-uppercase" id= "signup" data-zipCode={{zipCode}} href="#services">Find a Homey</a>
-            <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
-            <p></p>
-          </div>
+    <div class="col-sm-4">
+      <div class="team-member">
+
+      </div>
+    </div>
+
+  </div>
+  </section>
+
+  <button type="submit" class="btn btn-primary floating-btn addProp">
+    <h3>Add Property!</h3>
+  </button>
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+
+      {{#each allProperties}}
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading text-uppercase">{{propName}}</h2>
+          <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
+          <a class="btn btn-primary btn-md text-uppercase" id="signup" data-zipCode={{zipCode}} href="#services">Find a Homey</a>
+          <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
+          <p></p>
         </div>
-        
-        <div class="row">  
+      </div>
 
-          <div class="container">
-            
-            <div class="col-lg-8 text-center" align="center">
-            {{!-- <h2>Carousel Example</h2>   --}}
+      <div class="row">
+
+        <div class="container">
+
+          <div class="col-lg-8 text-center" align="center">
+            {{!--
+            <h2>Carousel Example</h2> --}}
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
@@ -83,7 +90,7 @@
                 <div class="item" align="middle">
                   <img src="img/portfolio/05-thumbnail.jpg" alt="Chicago" style="width:75%; height:100%;">
                 </div>
-              
+
                 <div class="item" align="middle">
                   <img src="img/portfolio/04-thumbnail.jpg" alt="New york" style="width:75%; height:100%;">
                 </div>
@@ -99,69 +106,69 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
-            </div>
-            {{/each}}
-
-            
-            <div class="col-lg-4 text-center" align="right">
-              <h5>Tasks for this property</h5>
-              <p></p>
-              <h6>
-                {{Tasks}}
-              </h6>
-
-            </div>
           </div>
-
-          
-
-        </div>
-      </div>
-    </section>
-    
+          {{/each}}
 
 
+          <div class="col-lg-4 text-center" align="right">
+            <h5>Tasks for this property</h5>
+            <p></p>
+            <h6>
+              {{Tasks}}
+            </h6>
 
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Homeys 2018</span>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline quicklinks">
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-            </ul>
           </div>
         </div>
+
+
+
       </div>
-    </footer>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy; Homeys 2018</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!--  Modals Add/edit Property -->
   <div id="addEditDeleteProp" class="modal fade" role="dialog">
@@ -175,37 +182,42 @@
 
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form role="form" method='POST' action='/api/properties' enctype='multipart/form-data'>
 
-                            <div class="form-group">
-                                <label for="propName">Property Name</label>
-                                <input type="text" class="form-control" id="propName" placeholder=""> 
-                            </div>
+            <div class="form-group">
+              <label for="propName">Property Name</label>
+              <input type="text" class="form-control" name="propName" id="propName" placeholder="">
+            </div>
 
-                            <div class="form-group">
-                                <label for="streetAddress">Street Address</label>
-                                <input type="text" class="form-control" id="streetAddress">
-                            </div>
+            <div class="form-group">
+              <label for="streetAddress">Street Address</label>
+              <input type="text" class="form-control" id="streetAddress" name="streetAddress">
+            </div>
 
-                            <div class="form-group">
-                                <label for="zipCode">Zip Code</label>
-                                <input type="text" class="form-control" id="zipCode">
-                            </div>
+            <div class="form-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" class="form-control" name="zipCode" id="zipCode">
+            </div>
 
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" class="form-control" id="city">
-                            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" name="city" id="city">
+            </div>
 
-                            <div class="form-group">
-                                <label for="state">State</label>
-                                <input type="text" class="form-control" id="state">
-                            </div>
+            <div class="form-group">
+              <label for="state">State</label>
+              <input type="text" class="form-control" name="state" id="state">
+            </div>
 
-                            <button type="submit" class="btn btn-primary" id="addProp">Add Property</button>
-                            <button type="submit" class="btn btn-primary" id="updateProp">Update</button>
-                            <button type="submit" class="btn btn-danger" id="deleteProp">Delete</button>
-                        </form>
+            <div class="form-group">
+              <label for="homePics">Upload images of your home</label>
+              <input type="file" id="homePics" name="homePics" multiple>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="addProp">Add Property</button>
+            <button type="submit" class="btn btn-primary" id="updateProp">Update</button>
+            <button type="submit" class="btn btn-danger" id="deleteProp">Delete</button>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -216,13 +228,13 @@
   </div>
 
 
-    </body>
-    <script type="text/javascript">
+</body>
+<script type="text/javascript">
 
-    if ( $(".prop-info").length ===0 ) {
-        $(".prop-table").html("<h3> Click below to add your first property!</h3>")
-    }   
+  if ($(".prop-info").length === 0) {
+    $(".prop-table").html("<h3> Click below to add your first property!</h3>")
+  }
 
-    </script>
+</script>
 
-    </html>
+</html>

@@ -3,6 +3,31 @@ var db = require("../models");
 var path = require("path");
 var geocoder = require('google-geocoder');
 var geodist = require('geodist')
+var multer = require('multer');
+
+var multerConf = {
+    storage: multer.diskStorage({
+        destination: function (req, file, next) {
+            next(null, './public/propPhotos')
+        },
+        filename: function (req, file, next) {
+            //console.log(file);
+            const ext = file.mimetype.split('/')[1];
+            next(null, file.fieldname + "-" + Date.now() + "." + ext)
+        }
+    }),
+    fileFilter: function (req, file, next) {
+        if (!file) {
+            next();
+        }
+        const image = file.mimetype.startsWith('image/');
+        if (image) {
+            next(null, true);
+        } else {
+            next({ message: "file type not supported" }, false)
+        }
+    }
+}
 
 var geo = geocoder({
     key: 'AIzaSyConfTJBxXd2JOwcungPSU_4XS-e4CrS24'
@@ -19,14 +44,18 @@ module.exports = function (app) {
     });
 
     //Create a new property
-    app.post("/api/properties", function (req, res) {
-       db.Property.create({
+    app.post("/api/properties", multer(multerConf).array('homePics', 3), function (req, res) {
+        console.log(req.files); 
+        db.Property.create({
             propName: req.body.propName,
             streetAddress: req.body.streetAddress,
             zipCode: req.body.zipCode,
             city: req.body.city,
             state: req.body.state,
-            OwnerId: req.session.user.id
+            OwnerId: req.session.user.id, 
+            pic1: req.files[0].path,
+            pic2: req.files[1].path,
+            pic3: req.files[2].path,
         })
             .then(function (data) {
                 res.json(data);
