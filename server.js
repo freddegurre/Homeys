@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+var multer = require('multer');
 
 
 
@@ -34,6 +35,8 @@ app.set("view engine", "handlebars");
 
 app.use(express.static("public"));
 
+
+
 // Routes
 // =============================================================
 require("./routes/owner-api-routes.js")(app);
@@ -44,7 +47,7 @@ require("./routes/provider-api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync().then(function() {
+db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });

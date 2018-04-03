@@ -10,6 +10,7 @@ $("#signup").on("click", function(event){
         user_name: $("#user_name").val().trim(),
         email: $("#emailRegister").val().trim(),
         pass: $("#pass").val().trim(),
+        url: $("#owner-pic").val().trim()
        };
 
       console.log(Owner);
@@ -28,6 +29,7 @@ $("#signup").on("click", function(event){
           $("#user_name").val("");
           $("#emailRegister").val("");
           $("#pass").val("");
+          $("#owner-pic").val()
 
         });
 

@@ -51,8 +51,8 @@
             <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/provider/signup">Become a Homey!</a>
-            </li>
+            <a class="nav-link js-scroll-trigger" href="/provider/signup">Become a Homey!</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -65,7 +65,7 @@
         <div class="intro-heading text-uppercase">Find a Homey</div>
         <div class="intro-lead-in">Peace of Mind with help from your neighbors</div>
         <a class="btn btn-primary btn-xl text-uppercase" id="signup" href="#services">Sign-up</a>
-        <a class="btn btn-primary btn-xl text-uppercase"  id="logInOwner"href="#services">Login</a>
+        <a class="btn btn-primary btn-xl text-uppercase" id="logInOwner" href="#services">Login</a>
       </div>
     </div>
   </header>
@@ -102,7 +102,8 @@
             <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
           </span>
           <h4 class="service-heading">Security</h4>
-          <p class="text-muted">Leave your home in safe hands with one of our Homeys! Select one of our qualified Homeys to guard and care for your house. Even doing chores at your request. 
+          <p class="text-muted">Leave your home in safe hands with one of our Homeys! Select one of our qualified Homeys to guard and care for
+            your house. Even doing chores at your request.
           </p>
         </div>
       </div>
@@ -272,6 +273,7 @@
           </div>
         </div>
         <div class="col-sm-3">
+<<<<<<< HEAD
             <div class="team-member">
               <img class="mx-auto rounded-circle" src="img/team/Dan.png" alt="">
               <h4>Daniel Lawrnce</h4>
@@ -294,7 +296,31 @@
                 </li>
               </ul>
             </div>
+=======
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src="img/team/3.jpg" alt="">
+            <h4>Daniel Lawrnce</h4>
+            <p class="text-muted">Template Tiger</p>
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-linkedin"></i>
+                </a>
+              </li>
+            </ul>
+>>>>>>> fileUpload
           </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
@@ -446,7 +472,14 @@
               <input type="text" class="form-control" id="pass">
             </div>
 
-            <button type="submit" class="btn btn-primary submitNewUser">Submit</button>
+            <div class="form-group">
+              <label for="owner-pic">Profile Image</label>
+              <br>
+              <input type="file" name="avatar" id="owner-pic" />
+            </div>
+
+
+            <button type="submit" class="btn btn-primary submitNewUser" method='POST' action='/uploadPhoto' enctype='multipart/form-data'>Submit</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -459,39 +492,39 @@
 
   <!-- Modal content login! -->
   <div id="loginOwner" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-  
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">Login!</h4>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-  
-          </div>
-          <div class="modal-body">
-              <form role="form">
+    <div class="modal-dialog">
 
-                  <div class="form-group">
-                    <label for="user">User Name</label>
-                    <input type="text" class="form-control" id="user">
-                  </div>
-    
-    
-                  <div class="form-group">
-                    <label for="pass">Password</label>
-                    <input type="text" class="form-control" id="passWord">
-                  </div>
-    
-                  <button type="submit" class="btn btn-primary submitLogin">Login</button>
-                </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Login!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
         </div>
-  
+        <div class="modal-body">
+          <form role="form">
+
+            <div class="form-group">
+              <label for="user">User Name</label>
+              <input type="text" class="form-control" id="user">
+            </div>
+
+
+            <div class="form-group">
+              <label for="pass">Password</label>
+              <input type="text" class="form-control" id="passWord">
+            </div>
+
+            <button type="submit" class="btn btn-primary submitLogin">Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
       </div>
+
     </div>
+  </div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.js"></script>
