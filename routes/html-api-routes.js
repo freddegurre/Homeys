@@ -78,7 +78,22 @@ module.exports = function(app) {
     res.send("you have to login"); 
      res.status(401); 
     }else {
-      res.sendFile(path.join(__dirname, "../public/provider-profile.html"));
+      db.Provider.findOne({
+        where: {
+          id: req.session.user.id
+        },
+        include: [db.Property]
+      
+    }).then(function(data) {
+      console.log(data) 
+        var homey = {
+          homeyProperties: data.Properties,
+          name: data.dataValues.name,
+          zipCode: data.dataValues.zipCode,
+          dailyRate: data.dataValues.dailyRate
+        }
+        res.render("provider-profile", homey)
+      })
     }
     
   });
