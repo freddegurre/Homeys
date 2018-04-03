@@ -32,13 +32,12 @@ module.exports = function (app) {
     });
 
     //Update a property
-    app.put('/api/property', function (req, res) {
-        dp.Property.update(
-            req.body,
-            {
-                where: {
-                    id: req.body.ud
-                }
+    app.put('/api/property/:id', function (req, res) {
+        console.log(req.body); 
+        dp.Property.update({
+            where: {
+                id: req.params.id
+            }
             }).then(function(data){
                 res.json(data)
             })
@@ -53,6 +52,17 @@ module.exports = function (app) {
         }).then(function(data){
             res.json(data);
         })
+    })
+
+    //Get one property a property
+    app.get('/api/properties/:id', function (req, res) {
+        db.Property.findOne ({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(data){
+            res.json(data);
+        }); 
     })
 
 }
