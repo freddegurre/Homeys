@@ -50,8 +50,7 @@ module.exports = function (app) {
             req.session.user = data.dataValues; 
             res.redirect('/provider-profile');
         }).catch(function(err){
-            console.log(err); 
-            res.json(err); 
+            res.redirect('/oops');
         });
     });
 
