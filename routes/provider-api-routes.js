@@ -43,7 +43,11 @@ module.exports = function (app) {
             zipCode: req.body.zipCode, 
             dailyRate: req.body.dailyRate, 
             url: shortUrl,
-            token: token
+            token: token,
+            email: req.body.email, 
+            about: req.body.about,
+            PhoneNo: req.body.PhoneNo,
+
         })
         .then(function(data){ 
             res.cookie("token", token, {maxAge:9999}); 
@@ -67,7 +71,7 @@ module.exports = function (app) {
             if (data){
                 console.log("loged in"); 
                 req.session.user = data.dataValues;
-                //res.redirect("/profile");
+                res.render();
                 res.json(data.dataValues);
                
             } else {

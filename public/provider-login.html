@@ -82,9 +82,25 @@
                     <input name = "pass" type="text" class="form-control" id="pass">
                   </div>
   
-                  <div class="form-group">
+              
+                    <div class="form-group">
+                      <label for="PhoneNo">PhoneNo</label>
+                      <input type="text" name = "PhoneNo" class="form-control" id="PhoneNo">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" name = "email" class="form-control" id="email">
+                    </div> 
+                    
+                    <div class="form-group">
                       <label for="pass">dailyRate</label>
                       <input type="text" name = "dailyRate" class="form-control" id="dailyRate">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="about">About me</label>
+                      <textarea type="text" name="about" rows="4" class="form-control" id="about"></textarea>
                     </div>
       
                   <div class="form-group">
@@ -110,20 +126,20 @@
             </div>
             <div class="panel-body">
   
-              <form role="form">
+              <form role="form" method="GET" action="/api/provider/login" enctype="multipart/form-data">
   
                 <div class="form-group">
                   <label for="user">User Name</label>
-                  <input type="text" class="form-control" id="name">
+                  <input type="text" name="name" class="form-control" id="name">
                 </div>
   
   
                 <div class="form-group">
                   <label for="pass">Password</label>
-                  <input type="text" class="form-control" id="pass">
+                  <input type="text" name="pass"class="form-control" id="pass">
                 </div>
   
-                <button type="submit" class="btn btn-primary submit">Submit</button>
+                <button type="submit" value="submit" class="btn btn-primary submit">Submit</button>
               </form>
   
             </div>
