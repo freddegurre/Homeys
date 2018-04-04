@@ -8,61 +8,179 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500i" rel="stylesheet">
+  
+
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/agency_profile.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
 
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
   <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">Become a Homey</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    
+  </div>
+</nav>
 
-    <div class="jumbotron">
-      <h1 class="text-center"><span class="glyphicon glyphicon-home"></span> Provider Login</h1>
-      <br>
+<!-- Header -->
+<header class="masthead">
+  
+</header>
+  <div class="row">
+      <div class="col-lg-12 text-center">
 
-      <div class="text-center">
-        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+        <h1>Sign-up or Login</h1>
+    </div>
+  </div>
+
+
+
+
+    <div class="row">
+      <div class="col-sm-2">
       </div>
+      <div class="col-sm-4">
+        <div class="team-member">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">Sign-up</h2>
+            </div>
+            <div class="panel-body">
+  
+                <form role="form" method='POST' action='/api/providers' enctype='multipart/form-data'>
+
+                  <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input name = "name" type="text" class="form-control" id="name">
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="zipCode">Zip Code</label>
+                    <input name = "zipCode" type="text" class="form-control" id="zipCode">
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="pass">Password</label>
+                    <input name = "pass" type="text" class="form-control" id="pass">
+                  </div>
+  
+                  <div class="form-group">
+                      <label for="pass">dailyRate</label>
+                      <input type="text" name = "dailyRate" class="form-control" id="dailyRate">
+                    </div>
+      
+                  <div class="form-group">
+                    <label for="owner-pic">Profile Image</label>
+                    <br>
+                    <input type="file" name="homeyavatar" id="owner-pic" />
+                  </div>
+      
+                  <button type="submit" value = "submit" class="btn btn-primary submitNewUser">Submit</button>
+                  
+                </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="team-member">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">Login</h2>
+            </div>
+            <div class="panel-body">
+  
+              <form role="form">
+  
+                <div class="form-group">
+                  <label for="user">User Name</label>
+                  <input type="text" class="form-control" id="name">
+                </div>
+  
+  
+                <div class="form-group">
+                  <label for="pass">Password</label>
+                  <input type="text" class="form-control" id="pass">
+                </div>
+  
+                <button type="submit" class="btn btn-primary submit">Submit</button>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        </div>
+
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-
-        
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">Login</h4>
-          </div>
-          <div class="panel-body">
-
-            <form role="form">
-
-              <div class="form-group">
-                <label for="user">User Name</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-
-
-              <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="text" class="form-control" id="pass">
-              </div>
-
-              <button type="submit" class="btn btn-primary submit">Submit</button>
-            </form>
-
-          </div>
-        </div>
-
       </div>
     </div>
 
-
-    <footer class="footer">
-      <div class="container">
-        <p><a> Homeys Copyright 2018</a></p>
-      </div>
-    </footer>
-
   </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy; Homeys 2018</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
@@ -70,37 +188,23 @@
 <script type="text/javascript">
 
 
-$(".submit").on("click", function(event){
-        event.preventDefault(); 
-
-        var login = {
-            name: $("#name").val().trim(),
-            pass: $("#pass").val().trim()
-        }
-    console.log(login); 
-   
-    $.post("/api/provider/login", login, function (data) {
-    console.log(data);
-          if (data) {
-            console.log("loged in"); 
-             
-            Redirect("/provider-profile")
-
-          }
-
-          else {
-            alert("Invalid Login");
-          }
-
-          $("#user_name").val("");
-          $("#pass").val("");
-
-        });
-
-    });
-
-  function Redirect(where){
-    window.location=where;
-  }
-
 </script>
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.js"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/agency.js"></script>
+
+    <!-- Custom scripts for add property  -->
+    <script src="js/reg-edit-delete-prop.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
