@@ -89,17 +89,19 @@ function Redirect(where) {
     window.location = where;
 }
 $(document).on('click', '#findHomey', function (event){
-    Redirect("/select-homey")
+    var id = $(this).data("id");
+    Redirect("/select-homey/"+id); 
 
 });
 
 $(document).on("click", "#bookSitter", function (){
     event.preventDefault();
-    var id = $(this).data("id");
+    var id = $(this).data("prop");
     var sitter = $(this).data("sitter");
+    console.log(sitter); 
     updateSitter(); 
     function updateSitter() {
-        console.log(id);
+        console.log("this is id"  + id);
         $.ajax({
             method: "PUT",
             url: "/api/property/" +id,

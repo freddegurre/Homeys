@@ -108,9 +108,11 @@ module.exports = function(app) {
     
   });
 
-  app.get("/select-homey/", function(req, res){
-    console.log(req.params.id)
-    res.render("find-homey", {id: 1} )
+  app.get("/select-homey/:id", function(req, res){
+    db.Provider.findAll({}).then(function(data){
+         res.render("find-homey", {homeys: data , id: req.params.id})
+    })
+    
   })
 
 };
