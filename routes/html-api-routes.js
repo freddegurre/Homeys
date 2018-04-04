@@ -94,7 +94,6 @@ module.exports = function(app) {
           id: req.session.user.id
         },
         include: [db.Property]
-      
     }).then(function(data) {
       console.log(data) 
         var homey = {
@@ -109,5 +108,8 @@ module.exports = function(app) {
     
   });
 
+  app.get("/select-homey/:id", function(req, res){
+    res.render("find-homey", )
+  })
 
 };

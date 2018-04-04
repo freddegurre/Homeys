@@ -84,12 +84,15 @@ $(document).on('click', '#editProp', function (event) {
                 });
         }
     });
-
-
-
-
 });
 function Redirect(where) {
     window.location = where;
 }
+$(document).on('click', '#findHomey', function (event){
+    var id = $(this).data("id");
+    console.log("i have been klicked" + id)
+    Redirect("/select-homey/"+id);
+
+    
+});
 
