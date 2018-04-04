@@ -42,7 +42,7 @@ module.exports = function (app) {
             pass: req.body.pass,
             zipCode: req.body.zipCode, 
             dailyRate: req.body.dailyRate, 
-            url: req.file.path,
+            url: shortUrl,
             token: token
         })
         .then(function(data){ 
