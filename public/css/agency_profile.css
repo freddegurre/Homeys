@@ -145,7 +145,7 @@ img::-moz-selection {
   color: #fed136;
 }
 
-/* @media (min-width: 992px) {
+@media (min-width: 992px) {
   #mainNav {
     padding-top: 25px;
     padding-bottom: 25px;
@@ -153,7 +153,7 @@ img::-moz-selection {
     -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
     transition: padding-top 0.3s, padding-bottom 0.3s;
     border: none;
-    background-color: transparent;
+    /* background-color: transparent; */
   }
   #mainNav .navbar-brand {
     font-size: 1.75em;
@@ -173,7 +173,7 @@ img::-moz-selection {
     font-size: 1.25em;
     padding: 12px 0;
   }
-} */
+}
 
 header.masthead {
   text-align: center;
