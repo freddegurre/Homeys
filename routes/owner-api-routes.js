@@ -59,6 +59,7 @@ module.exports = function (app) {
         if (req.file) {
             console.log(req.file)
         }
+      
         db.Owner.create({
             email: req.body.email,
             user_name: req.body.user_name,
@@ -73,8 +74,13 @@ module.exports = function (app) {
                 res.redirect('/profile')
                 
             }).catch(function (err) {
-                res.json(err);
+                console.log(err.errors[0].message)
+                var error = {error: err.errors[0].message} 
+                //res.send(err.errors[0].message);
+                res.render('oops', error); 
+              
             })
+
     });
     
     //Login route 

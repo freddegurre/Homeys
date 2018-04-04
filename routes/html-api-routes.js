@@ -38,8 +38,8 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     if (!req.session.user) {
     //res.send("you have to login"); 
-    res.redirect('/oops')
-     res.status(401); 
+    var error = {error: "You need to log in"}
+    res.redirect('/oops');
     }else {
       console.log('the profile page is here' + req.session.user)
       db.Owner.findOne({
@@ -75,7 +75,8 @@ module.exports = function(app) {
 
   //Trying to access profile page but not logged in
   app.get('/oops', function (req, res){
-    res.sendFile(path.join(__dirname, "../public/oops.html" ))
+   res.sendFile(path.join(__dirname, "../public/oops1.html" ));
+
   })
 
   
