@@ -75,12 +75,8 @@ module.exports = function (app) {
             }).catch(function (err) {
                 res.json(err);
             })
-
-
-
-
-
     });
+    
     //Login route 
     app.post("/api/login", function (req, res) {
 

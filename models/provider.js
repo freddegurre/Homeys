@@ -38,7 +38,10 @@ module.exports = function (sequelize, DataTypes ) {
         token: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        url: {
+            type: DataTypes.TEXT
+          }
     });
 
     Provider.associate = function (models) {
