@@ -4,38 +4,6 @@ $("#signup").on("click", function(event){
   });
 
 
-  //  $(".submitNewUser").on("click", function(event) {
-  //     event.preventDefault();
-      
-      // var Owner = {
-      //   user_name: $("#user_name").val().trim(),
-      //   email: $("#emailRegister").val().trim(),
-      //   pass: $("#pass").val().trim(),
-      //   url: $("#owner-pic").val().trim()
-      //  };
-
-      // console.log(Owner);
-
-      // $.post("/api/owners", Owner,
-      //   function(data) {
-
-      //     if (data) {
-      //       console.log(data);
-      //       console.log(data.user_name);
-      //       Redirect("/profile")
-      //     }
-      //     else {
-      //       alert("Please Try Again");
-      //     }
-          // $("#user_name").val("");
-          // $("#emailRegister").val("");
-          // $("#pass").val("");
-          // $("#owner-pic").val()
-
-        // });
-
-    // });
-
     $("#logInOwner").on("click", function(event){
       event.preventDefault();
       $("#loginOwner").modal();
@@ -69,6 +37,8 @@ $("#signup").on("click", function(event){
       });
 
   });
+
+  
 
     
   function Redirect(where){

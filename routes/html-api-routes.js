@@ -111,7 +111,10 @@ module.exports = function(app) {
           name: data.dataValues.name,
           zipCode: data.dataValues.zipCode,
           dailyRate: data.dataValues.dailyRate,
-          url: shortUrl
+          url: shortUrl,
+          PhoneNo: data.dataValues.PhoneNo,
+          email: data.dataValues.email,
+          about: data.dataValues.about
         }
         res.render("provider-profile", homey)
       })

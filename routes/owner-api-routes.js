@@ -92,7 +92,6 @@ module.exports = function (app) {
                 pass: req.body.pass
             }
         }).then(function (data) {
-            console.log(data.dataValues);
             if (data) {
                 console.log("loged in");
                 req.session.user = data.dataValues;
