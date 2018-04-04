@@ -89,10 +89,29 @@ function Redirect(where) {
     window.location = where;
 }
 $(document).on('click', '#findHomey', function (event){
-    var id = $(this).data("id");
-    console.log("i have been klicked" + id)
-    Redirect("/select-homey/"+id);
+    Redirect("/select-homey")
 
-    
 });
+
+$(document).on("click", "#bookSitter", function (){
+    event.preventDefault();
+    var id = $(this).data("id");
+    var sitter = $(this).data("sitter");
+    updateSitter(); 
+    function updateSitter() {
+        console.log(id);
+        $.ajax({
+            method: "PUT",
+            url: "/api/property/" +id,
+            data: {
+               ProviderId: sitter
+            }
+        }).then(function () {
+                Redirect("/profile");
+            });
+    }
+
+})
+
+
 

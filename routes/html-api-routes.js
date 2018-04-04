@@ -108,8 +108,9 @@ module.exports = function(app) {
     
   });
 
-  app.get("/select-homey/:id", function(req, res){
-    res.render("find-homey", )
+  app.get("/select-homey/", function(req, res){
+    console.log(req.params.id)
+    res.render("find-homey", {id: 1} )
   })
 
 };
