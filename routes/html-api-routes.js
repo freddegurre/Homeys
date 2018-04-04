@@ -100,7 +100,6 @@ module.exports = function(app) {
           id: req.session.user.id
         },
         include: [db.Property]
-      
     }).then(function(data) {
       console.log(data) 
       var shortUrl = data.dataValues.url.replace("public", "");
@@ -117,5 +116,11 @@ module.exports = function(app) {
     
   });
 
+  app.get("/select-homey/:id", function(req, res){
+    db.Provider.findAll({}).then(function(data){
+         res.render("find-homey", {homeys: data , id: req.params.id})
+    })
+    
+  })
 
 };
