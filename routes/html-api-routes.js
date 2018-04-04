@@ -36,7 +36,8 @@ module.exports = function(app) {
   //owner profile page, is only acsessable when user is loged in
   app.get("/profile", function(req, res) {
     if (!req.session.user) {
-    res.send("you have to login"); 
+    //res.send("you have to login"); 
+    res.redirect('/oops')
      res.status(401); 
     }else {
       console.log('the profile page is here' + req.session.user)
@@ -48,8 +49,7 @@ module.exports = function(app) {
         include: [db.Property]
       }).then(function(data) {
         console.log(data.get({plain: true}));
-        //loop through data.Properties to get all the 
-       
+      
         var shortUrl = data.dataValues.url.replace("public", "");
         var homePics = [];
         homePics.push(data.Properties)
@@ -59,7 +59,6 @@ module.exports = function(app) {
           email: data.dataValues.email,
           user_name: data.dataValues.user_name,
           url: shortUrl,
-
         }
       
       
@@ -70,6 +69,13 @@ module.exports = function(app) {
     }
     
   });  
+
+  //Trying to access profile page but not logged in
+  app.get('/oops', function (req, res){
+    res.sendFile(path.join(__dirname, "../public/oops.html" ))
+  })
+
+  
   
   //---------------PROVIDER-------
 

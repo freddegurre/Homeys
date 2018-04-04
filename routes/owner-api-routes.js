@@ -75,12 +75,8 @@ module.exports = function (app) {
             }).catch(function (err) {
                 res.json(err);
             })
-
-
-
-
-
     });
+    
     //Login route 
     app.post("/api/login", function (req, res) {
 
@@ -106,6 +102,18 @@ module.exports = function (app) {
         });
     });
 
+    //LOGOUT of Owner Profile. Destroy session!
+    app.get('/bye', function (req, res) {
+        console.log("logout clicked");
+        req.session.destroy(function(err) {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log(req.end);
+                res.redirect('/')
+            };
+        });
+    });
 
     // delete owner 
     app.delete("/api/owners/:id", function (req, res) {
