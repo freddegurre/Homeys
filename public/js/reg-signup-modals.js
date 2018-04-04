@@ -38,7 +38,29 @@ $("#signup").on("click", function(event){
 
   });
 
-  
+  $(".homeyLogin").on("click", function (event){
+    event.preventDefault(); 
+    var login = {
+      name: $("#homeyName").val().trim(),
+      pass: $("#homeyPass").val().trim()
+      }
+
+      $.post("/api/provider/login", login, function (data) {
+              if (data) {
+                console.log("loged in"); 
+                 
+               Redirect("/provider-profile")
+      
+              }
+      
+              else {
+                Redirect("/oops")
+              }
+      
+            });
+
+  })
+
 
     
   function Redirect(where){

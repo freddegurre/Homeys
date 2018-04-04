@@ -60,7 +60,7 @@ module.exports = function (app) {
 
     //Provider login!
     app.post("/api/provider/login", function(req, res){
-        
+        console.log(req.body)
         db.Provider.findOne({
             where: {
                 name: req.body.name, 
