@@ -47,7 +47,7 @@ module.exports = function (sequelize, DataTypes ) {
     Provider.associate = function (models) {
         Provider.hasMany(models.Property, {
             onDelete: "cascade",
-            default: null
+            
         });
     }
 

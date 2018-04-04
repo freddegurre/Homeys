@@ -19,6 +19,7 @@ module.exports = function(app) {
         },
         include: [db.Property]
       }).then(function(data) {
+        console.log(data.Properties);
         var propObj = {
           allProperties: data.Properties,
           email: data.dataValues.email,
@@ -46,10 +47,13 @@ module.exports = function(app) {
           id: req.session.user.id
         },
         
-        include: [db.Property]
+        include: [{
+          model: db.Property, 
+          include: [db.Provider]
+        }],
+        
       }).then(function(data) {
         console.log(data.get({plain: true}));
-      
         var shortUrl = data.dataValues.url.replace("public", "");
         var homePics = [];
         homePics.push(data.Properties)
@@ -60,7 +64,10 @@ module.exports = function(app) {
           user_name: data.dataValues.user_name,
           url: shortUrl,
         }
-      
+
+        for (var i =0; i < data.Properties.length; i++){
+          console.log(data.Properties[i].ProviderId + "this is provider id"); 
+        }
       
         res.render("profile", propObj)
         
@@ -101,7 +108,6 @@ module.exports = function(app) {
         },
         include: [db.Property]
     }).then(function(data) {
-      console.log(data) 
       var shortUrl = data.dataValues.url.replace("public", "");
         var homey = {
           homeyProperties: data.Properties,

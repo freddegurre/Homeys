@@ -107,11 +107,14 @@
               <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
               
               <div class="col-lg-12 text-center" align="right">
-                <h5>Tasks for this property</h5>
-                <p></p>
-                <h6>
-                  {{Tasks}}
+                <h5>Provider info</h5>
+                <h6 text-muted>
+                  {{Provider.name}}
                 </h6>
+                <h6 text-muted> Daily Rate: 
+                  {{Provider.dailyRate}}
+                </h6>
+                 <img class="homey-img" style="height:20px;"src={{Provider.url}} alt="">
               </div>
 
             </div>
