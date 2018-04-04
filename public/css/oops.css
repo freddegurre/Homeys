@@ -1,4 +1,4 @@
-header.masthead {
+#oopsHead {
     text-align: center;
     color: white;
     background-image: url("../img/yallow-home.jpg");
@@ -11,6 +11,6 @@ header.masthead {
     background-size: cover;
   }
 
-  .title {
+  #oopsTitle {
       color: rgb(199, 131, 4)
   }
