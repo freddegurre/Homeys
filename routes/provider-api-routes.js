@@ -35,6 +35,8 @@ module.exports = function (app) {
         if (req.file) {
             console.log(req.file)
         }
+        var shortUrl = req.file.path.replace("public", "");
+        console.log(shortUrl);
         db.Provider.create({
             name: req.body.name, 
             pass: req.body.pass,
@@ -46,7 +48,7 @@ module.exports = function (app) {
         .then(function(data){ 
             res.cookie("token", token, {maxAge:9999}); 
             req.session.user = data.dataValues; 
-            res.send('Congrats you are a homey now!');
+            res.redirect('/provider-profile');
         }).catch(function(err){
             console.log(err); 
             res.json(err); 

@@ -81,7 +81,7 @@ module.exports = function(app) {
 
   //provider signup loads the form for providers to signup, this hould become popup on indix!
   app.get("/provider/signup", function(req, res){
-    res.sendFile(path.join(__dirname, "../public/provider.html" ))
+    res.sendFile(path.join(__dirname, "../public/provider-login.html" ))
   })
 
   //Login provider
@@ -103,11 +103,13 @@ module.exports = function(app) {
       
     }).then(function(data) {
       console.log(data) 
+      var shortUrl = data.dataValues.url.replace("public", "");
         var homey = {
           homeyProperties: data.Properties,
           name: data.dataValues.name,
           zipCode: data.dataValues.zipCode,
-          dailyRate: data.dataValues.dailyRate
+          dailyRate: data.dataValues.dailyRate,
+          url: shortUrl
         }
         res.render("provider-profile", homey)
       })
