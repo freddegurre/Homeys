@@ -65,10 +65,6 @@ module.exports = function(app) {
           url: shortUrl,
         }
 
-        for (var i =0; i < data.Properties.length; i++){
-          console.log(data.Properties[i].ProviderId + "this is provider id"); 
-        }
-      
         res.render("profile", propObj)
         
       })
