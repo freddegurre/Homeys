@@ -96,8 +96,7 @@ module.exports = function(app) {
   //Provider profile page is only acsessable when user is loged in
   app.get("/provider-profile", function(req, res) {
     if (!req.session.user) {
-    res.send("you have to login"); 
-     res.status(401); 
+      res.redirect('/oops');
     }else {
       db.Provider.findOne({
         where: {
