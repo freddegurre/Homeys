@@ -48,8 +48,7 @@ module.exports = function(app) {
         include: [db.Property]
       }).then(function(data) {
         console.log(data.get({plain: true}));
-        //loop through data.Properties to get all the 
-       
+      
         var shortUrl = data.dataValues.url.replace("public", "");
         var homePics = [];
         homePics.push(data.Properties)
@@ -70,6 +69,8 @@ module.exports = function(app) {
     }
     
   });  
+
+  
   
   //---------------PROVIDER-------
 

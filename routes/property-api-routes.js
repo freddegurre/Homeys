@@ -107,7 +107,7 @@ module.exports = function (app) {
     //Find sitter
     app.get('/find-homey', function (req, res) {
         //Get house zip code to lat/long
-        var propZip = 93019;
+        var propZip = 92591;
         geo.find(propZip, function (err, result) {
             proplat = result[0].location.lat;
             proplng = result[0].location.lat;
