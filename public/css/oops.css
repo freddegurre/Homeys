@@ -14,3 +14,11 @@
   #oopsTitle {
       color: rgb(199, 131, 4)
   }
+
+  #logInOops {
+      background-color: #fed136;
+      border-color: #fed136;
+      font-size: 18px;
+      padding: 20px 40px;
+      font-weight: 700;
+  }
