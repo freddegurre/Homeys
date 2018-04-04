@@ -96,15 +96,14 @@ $(document).on('click', '#findHomey', function (event){
 
 $(document).on("click", "#bookSitter", function (){
     event.preventDefault();
-    var id = $(this).data("prop");
+    var currentLocation = window.location;
+   var propId =  currentLocation.href.replace("http://localhost:8080/select-homey/", "");
     var sitter = $(this).data("sitter");
-    console.log(sitter); 
     updateSitter(); 
     function updateSitter() {
-        console.log("this is id"  + id);
         $.ajax({
             method: "PUT",
-            url: "/api/property/" +id,
+            url: "/api/property/" + propId,
             data: {
                ProviderId: sitter
             }

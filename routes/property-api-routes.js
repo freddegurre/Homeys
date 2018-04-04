@@ -72,6 +72,7 @@ module.exports = function (app) {
 
     //Update a property
     app.put('/api/property/:id', function (req, res) {
+        console.log(req.body);
         db.Property.update(req.body,{
             where: {
                 id: req.params.id
