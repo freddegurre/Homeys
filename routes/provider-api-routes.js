@@ -31,12 +31,13 @@ module.exports = function (app) {
     //create new provider
     app.post("/api/providers", multer(multerConf).single('homeyavatar'), function(req, res){
         var token = "t" + Math.random(); 
-        console.log(req);
-        if (req.file) {
-            console.log(req.file)
-        }
+        console.log(req.body.name);
+        console.log(token);
+        // if (req.file) {
+        //     console.log(req.file)
+        // }
         var shortUrl = req.file.path.replace("public", "");
-        console.log(shortUrl);
+        //console.log(shortUrl);
         db.Provider.create({
             name: req.body.name, 
             pass: req.body.pass,
@@ -50,10 +51,13 @@ module.exports = function (app) {
 
         })
         .then(function(data){ 
+            console.log('data is coming back')
             res.cookie("token", token, {maxAge:9999}); 
             req.session.user = data.dataValues; 
+            console.log(`session is set ${req.session.user}`)
             res.redirect('/provider-profile');
         }).catch(function(err){
+            console.log(err)
             res.redirect('/oops');
         });
     });

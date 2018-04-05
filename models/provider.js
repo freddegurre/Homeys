@@ -46,7 +46,7 @@ module.exports = function (sequelize, DataTypes ) {
             }
         },
         PhoneNo:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             validate: {
                 len: [4],
             }
