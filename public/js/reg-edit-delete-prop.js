@@ -94,25 +94,7 @@ $(document).on('click', '#findHomey', function (event){
 
 });
 
-$(document).on("click", "#bookSitter", function (){
-    event.preventDefault();
-    var currentLocation = window.location;
-   var propId =  currentLocation.href.replace("http://localhost:8080/select-homey/", "");
-    var sitter = $(this).data("sitter");
-    updateSitter(); 
-    function updateSitter() {
-        $.ajax({
-            method: "PUT",
-            url: "/api/property/" + propId,
-            data: {
-               ProviderId: sitter
-            }
-        }).then(function () {
-                Redirect("/profile");
-            });
-    }
 
-})
 
 
 
