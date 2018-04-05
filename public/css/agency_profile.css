@@ -64,6 +64,34 @@ section h3.section-subheading {
 .carousel-inner {
   max-height: 300px;
 }
+.booked {
+  margin-left: -180px;
+  margin-top: 115px;
+
+  background-color: #fed136;
+  width: 300px;
+  transform: rotate(-90deg);
+    transform-origin: right, top;
+    -ms-transform: rotate(-90deg);
+    -ms-transform-origin:right, top;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin:right, top;
+    position: absolute;
+}
+@keyframes glowing {
+  0% { box-shadow: 0 0 -10px #212529; }
+  40% { box-shadow: 0 0 20px #212529; }
+  60% { box-shadow: 0 0 20px #212529; }
+  100% { box-shadow: 0 0 -10px #212529; }
+}
+
+.button-glow {
+  animation: glowing 2500ms infinite;
+}
+
+
+
+
 
 .btn {
   font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
