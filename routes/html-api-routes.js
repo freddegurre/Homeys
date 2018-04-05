@@ -68,7 +68,7 @@ module.exports = function(app) {
         res.render("profile", propObj)
         
       })
-      //res.sendFile(path.join(__dirname, "../public/profile.html"));
+     
     }
     
   });  
@@ -122,10 +122,13 @@ module.exports = function(app) {
   });
 
   app.get("/select-homey/:id", function(req, res){
-    db.Provider.findAll({}).then(function(data){
+    if (!req.session.user){
+      res.redirect('/oops');
+    }else{
+       db.Provider.findAll({}).then(function(data){
          res.render("find-homey", {homeys: data , id: req.params.id})
-    })
-    
-  })
+        })
+    }
+  });
 
 };

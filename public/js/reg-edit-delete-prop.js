@@ -12,29 +12,7 @@ $(document).on('click', '.addProp', function (event) {
     $("#state").val("")
     $("#addEditDeleteProp").modal();
 });
-//---- ADDD new Property
-// $(document).on('click', '#addProp', function (event) {
-//     event.preventDefault();
 
-//     var Property = {
-//         propName: $("#propName").val().trim(),
-//         streetAddress: $("#streetAddress").val().trim(),
-//         zipCode: $("#zipCode").val().trim(),
-//         city: $("#city").val().trim(),
-//         state: $("#state").val().trim(),
-//     };
-
-//     $.post("/api/properties", Property,
-//         function (data) {
-//             if (data) {
-//                 Redirect("/profile");
-//             }
-//             else {
-//                 alert("Please Try Again");
-//             }
-//         });
-
-// });
 //----- edit property -----
 $(document).on('click', '#editProp', function (event) {
     $("#addProp").hide();
@@ -50,11 +28,9 @@ $(document).on('click', '#editProp', function (event) {
     })
     $(document).on('click', '#updateProp', function (event) {
         event.preventDefault();
-        console.log("update has beeen klicked")
         updateProp();
-
         function updateProp() {
-            console.log(id);
+        
             $.ajax({
                 method: "PUT",
                 url: "/api/property/" + id,
@@ -71,11 +47,9 @@ $(document).on('click', '#editProp', function (event) {
         }
     })
     $(document).on('click', '#deleteProp', function (event){
-        console.log("yayy" + id); 
         event.preventDefault();
         deletePro(); 
         function deletePro() {
-            console.log(id);
             $.ajax({
                 method: "DELETE",
                 url: "/api/properties/" + id,
@@ -85,14 +59,16 @@ $(document).on('click', '#editProp', function (event) {
         }
     });
 });
-function Redirect(where) {
-    window.location = where;
-}
+
 $(document).on('click', '#findHomey', function (event){
     var id = $(this).data("id");
     Redirect("/select-homey/"+id); 
 
 });
+
+function Redirect(where) {
+    window.location = where;
+}
 
 
 

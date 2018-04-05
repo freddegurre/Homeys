@@ -1,211 +1,213 @@
 <body id="page-top">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-      <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">My Owner Profile</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          Menu
-          <i class="fa fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav text-uppercase ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/bye">Logout</a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">My Owner Profile</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/bye">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="masthead">
+
+  </header>
+
+  <section class="section-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="team-member">
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="team-member">
+            <img class="mx-auto rounded-circle" src={{url}} alt="">
+            <h4>{{user_name}}</h4>
+            <p class="text-muted">{{email}}</p>
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="team-member">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <button type="submit" class="btn btn-primary floating-btn addProp">
+    <h3>Add Property!</h3>
+  </button>
+  <section class="bg-light" id="portfolio">
+    <div class="container">
+
+      {{#each allProperties}}
+      <div class="row">
+        {{#if Provider.name}} Booked {{/if}}
+
+        <div class="container">
+
+          <div class="col-lg-6 text-center" align="center">
+            {{!--
+            <h2>Carousel Example</h2> --}}
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                <div class="item active" align="middle">
+                  <img src={{pic1}} alt="Los Angeles" style="width:100%; height:100%;">
+                </div>
+
+                <div class="item" align="middle">
+                  <img src={{pic2}} alt="Chicago" style="width:100%; height:100%;">
+                </div>
+
+                <div class="item" align="middle">
+                  <img src={{pic3}} alt="New york" style="width:100%; height:100%;">
+                </div>
+              </div>
+
+              <!-- Left and right controls -->
+              <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="propertyInfo">
+
+              <div class="col-lg-12 text-center">
+
+                <h2 class="section-heading text-uppercase">{{propName}}</h2>
+                <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
+
+                <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
+
+                <div class="col-lg-12 text-center" align="right">
+                  {{#if Provider.name}}
+
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <h6 "text-muted">
+                        {{Provider.name}}
+                      </h6>
+                      <h6 "text-muted"> DailyRate: ${{Provider.dailyRate}}.00/hr
+                      </h6>
+                      <h6 "text-muted">
+                        {{Provider.about}}
+                      </h6>
+                      <h6 "text-muted">
+                        Phone Number : {{Provider.PhoneNo}}
+                      </h6>
+                      <h6 "text-muted">
+                        {{Provider.email}}
+                      </h6>
+                    </div>
+                    <div class="col-lg-6">
+                      <img class="homey-img" style="height:100px;" src={{Provider.url}} alt="">
+                    </div>
+                  </div>
+                  {{else}}
+                  <br>
+                  <br>
+
+                  <a class="btn btn-primary btn-md text-uppercase" id="findHomey" data-zipCode={{zipCode}} data-id={{id}}>Find a Homey</a>
+
+                  {{/if}}
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+        </div>
+
+
+
+      </div>
+      {{/each}}
+    </div>
+  </section>
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <span class="copyright">Copyright &copy; Homeys 2018</span>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline social-buttons">
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-facebook"></i>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">
+                <i class="fa fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="#">Privacy Policy</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Terms of Use</a>
             </li>
           </ul>
         </div>
       </div>
-    </nav>
-
-    <!-- Header -->
-    <header class="masthead">
-      
-    </header>
-
-      <section class="section-top">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="team-member">
-                
-              </div>
-            </div>
- 
-            <div class="col-sm-4">
-              <div class="team-member">
-                <img class="mx-auto rounded-circle" src={{url}} alt="">
-                <h4>{{user_name}}</h4>
-                <p class="text-muted">{{email}}</p>
-              
-               
-              </div>
-            </div>
-
-            <div class="col-sm-4">
-              <div class="team-member">
-                
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-  <button type="submit" class="btn btn-primary floating-btn addProp"><h3>Add Property!</h3></button>
-    <section class="bg-light" id="portfolio">
-      <div class="container">
-        
-        {{#each allProperties}}  
-         <div class="row">  
-           {{#if Provider.name}}
-           Booked
-           {{/if}}
-
-          <div class="container">
-            
-            <div class="col-lg-6 text-center" align="center">
-            {{!-- <h2>Carousel Example</h2>   --}}
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                  <div class="item active" align="middle">
-                    <img src={{pic1}} alt="Los Angeles" style="width:100%; height:100%;">
-                  </div>
-
-                  <div class="item" align="middle">
-                    <img src={{pic2}} alt="Chicago" style="width:100%; height:100%;">
-                  </div>
-                
-                  <div class="item" align="middle">
-                    <img src={{pic3}} alt="New york" style="width:100%; height:100%;">
-                  </div>
-                </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-
-        <div class="row">
-          <div class="propertyInfo">
-            
-            <div class="col-lg-12 text-center">
-              
-              <h2 class="section-heading text-uppercase">{{propName}}</h2>
-              <h3 class="section-subheading text-muted">{{streetAddress}} {{city}} {{state}} {{zipCode}}</h3>
-              
-              <a class="btn btn-primary btn-md text-uppercase" id="editProp" data-id={{id}} href="#services">Edit Property</a>
-              
-              <div class="col-lg-12 text-center" align="right">
-                {{#if Provider.name}}
-
-                <div class="row">
-                  <div class="col-lg-6">
-                <h6 "text-muted">
-                  {{Provider.name}}
-                </h6>
-                <h6 "text-muted"> DailyRate: 
-                  ${{Provider.dailyRate}}.00/hr 
-                </h6>
-                <h6 "text-muted"> 
-                  {{Provider.about}}
-                </h6>
-                <h6 "text-muted">  
-                  Phone Number : {{Provider.PhoneNo}}
-                </h6>
-                <h6 "text-muted"> 
-                  {{Provider.email}}
-                </h6>
-                </div>
-                <div class="col-lg-6">
-                 <img class="homey-img" style="height:100px;"src={{Provider.url}} alt="">
-                 </div></div>
-                 {{else}}
-                 <br>
-                 <br>
-                 
-                <a class="btn btn-primary btn-md text-uppercase" id="findHomey" data-zipCode={{zipCode}} data-id={{id}}>Find a Homey</a>
-                 
-                 {{/if}}
-              </div>
-
-            </div>
-          </div>
-        </div>
-        
-       
-            
-
-            
-            
-          </div>
-
-          
-
-        </div>
-        {{/each}}
-      </div>
-    </section>
-    
-
-
-
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <span class="copyright">Copyright &copy; Homeys 2018</span>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline social-buttons">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-linkedin"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul class="list-inline quicklinks">
-              <li class="list-inline-item">
-                <a href="#">Privacy Policy</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Terms of Use</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </div>
+  </footer>
 
   <!--  Modals Add/edit Property -->
   <div id="addEditDeleteProp" class="modal fade" role="dialog">
